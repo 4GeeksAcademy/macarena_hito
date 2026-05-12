@@ -5,6 +5,7 @@
       navMenu: "Menu",
       navOrders: "Pedidos",
       navPoints: "Brasaland points",
+      navAbout: "Sobre nosotros",
       navContact: "Contacto",
       register: "Registrarse",
       myPurchases: "Mis compras",
@@ -25,14 +26,34 @@
       checkout: "Finalizar compra simulada",
       clearPurchases: "Vaciar Mis compras",
       pointsTitle: "Brasaland points",
+      pointsTopTag: "Beneficios exclusivos",
       pointsLead:
         "Por cada compra acumulas puntos. Puedes canjear recompensas para mejorar tu experiencia en Brasaland.",
+      pointsCta: "Quiero mi cuenta Brasa Points",
+      pointsBenefitOneTitle: "Compra y suma",
+      pointsBenefitOneText: "Acumula 1 punto por cada 1.000 COP en pedidos simulados.",
+      pointsBenefitTwoTitle: "Canjea rapido",
+      pointsBenefitTwoText: "Desde 80 puntos desbloqueas premios inmediatos en tu mesa.",
+      pointsBenefitThreeTitle: "Sube de nivel",
+      pointsBenefitThreeText: "Mientras mas compras, mejores recompensas consigues.",
+      pointsWeeklyPromoTitle: "Martes Brasa x2",
+      pointsWeeklyPromoInactive: "Activa cada martes: puntos dobles en cada compra.",
+      pointsWeeklyPromoActive: "Hoy esta activo Martes Brasa: tus compras suman puntos dobles.",
       pointsPromo: "Registrate y participa",
       yourPoints: "Tus puntos",
+      pointsProgressTitle: "Progreso al siguiente premio",
+      pointsNextReward: "Te faltan {n} pts para tu proximo premio.",
+      pointsAllRewards: "Ya puedes canjear cualquier recompensa disponible.",
       rewardsAvailable: "Recompensas disponibles",
+      rewardDrink: "Canjear bebida gratis (80 pts)",
+      rewardSide: "Canjear acompanamiento (150 pts)",
+      rewardBurger: "Canjear burger clasica (280 pts)",
       pointsEmpty: "Aun no tienes puntos acumulados.",
       contactTitle: "Contacto",
       contactText: "Hablemos sobre reservas, eventos o alianzas comerciales.",
+      aboutTitle: "Sobre nosotros",
+      aboutText:
+        "Somos una empresa de restaurant a la brasa, ubicados en Colombia y Estados Unidos..",
       footerSubtitle: "Cocina a la brasa · Colombia y Florida",
       backHome: "Volver al inicio",
       registerTitle: "Registro de usuario",
@@ -73,6 +94,7 @@
       addBeforeCheckout: "Agrega productos a Mis compras antes de finalizar compra.",
       orderSent: "Pedido simulado enviado correctamente.",
       purchaseCompleted: "Compra simulada completada. Ganaste {n} puntos.",
+      purchaseCompletedPromo: "Compra simulada completada. Ganaste {n} puntos con promo x2.",
       notEnoughPoints: "No tienes puntos suficientes para este canje ({n} pts).",
       redeemed: "Canje realizado con exito. Usaste {n} puntos.",
     },
@@ -81,6 +103,7 @@
       navMenu: "Menu",
       navOrders: "Orders",
       navPoints: "Brasaland points",
+      navAbout: "About us",
       navContact: "Contact",
       register: "Sign up",
       myPurchases: "My purchases",
@@ -101,14 +124,34 @@
       checkout: "Complete simulated checkout",
       clearPurchases: "Clear My purchases",
       pointsTitle: "Brasaland points",
+      pointsTopTag: "Exclusive benefits",
       pointsLead:
         "For every purchase you earn points. Redeem rewards to improve your Brasaland experience.",
+      pointsCta: "I want my Brasa Points account",
+      pointsBenefitOneTitle: "Buy and earn",
+      pointsBenefitOneText: "Collect 1 point for every 1,000 COP in simulated orders.",
+      pointsBenefitTwoTitle: "Redeem fast",
+      pointsBenefitTwoText: "From 80 points you unlock instant rewards at your table.",
+      pointsBenefitThreeTitle: "Level up",
+      pointsBenefitThreeText: "The more you buy, the better your rewards become.",
+      pointsWeeklyPromoTitle: "Brasa Tuesday x2",
+      pointsWeeklyPromoInactive: "Active every Tuesday: double points on every purchase.",
+      pointsWeeklyPromoActive: "Brasa Tuesday is active today: your purchases earn double points.",
       pointsPromo: "Sign up and participate",
       yourPoints: "Your points",
+      pointsProgressTitle: "Progress to next reward",
+      pointsNextReward: "You need {n} pts for your next reward.",
+      pointsAllRewards: "You can now redeem any available reward.",
       rewardsAvailable: "Available rewards",
+      rewardDrink: "Redeem free drink (80 pts)",
+      rewardSide: "Redeem side dish (150 pts)",
+      rewardBurger: "Redeem classic burger (280 pts)",
       pointsEmpty: "You do not have points yet.",
       contactTitle: "Contact",
       contactText: "Let us talk about reservations, events, or partnerships.",
+      aboutTitle: "About us",
+      aboutText:
+        "We are a charcoal-grill restaurant company located in Colombia and the United States.",
       footerSubtitle: "Charcoal-grilled cuisine · Colombia and Florida",
       backHome: "Back to home",
       registerTitle: "User registration",
@@ -149,6 +192,7 @@
       addBeforeCheckout: "Add products to My purchases before checkout.",
       orderSent: "Simulated order sent successfully.",
       purchaseCompleted: "Simulated purchase completed. You earned {n} points.",
+      purchaseCompletedPromo: "Simulated purchase completed. You earned {n} points with x2 promo.",
       notEnoughPoints: "You do not have enough points for this reward ({n} pts).",
       redeemed: "Reward redeemed successfully. You used {n} points.",
     },
@@ -156,7 +200,7 @@
 
   const getLang = () => (localStorage.getItem("siteLang") === "en" ? "en" : "es");
   const t = (key, vars) => {
-    let message = (i18n[getLang()] && i18n[getLang()][key]) || i18n.es[key] || key;
+    let message = (i18n[getLang()] && i18n[getLang()][key]) || i18n.es[key] || "";
     if (vars) {
       Object.keys(vars).forEach((k) => {
         message = message.replace(`{${k}}`, String(vars[k]));
@@ -403,6 +447,10 @@
     const cartStatusNode = document.getElementById("cartStatus");
     const pointsNode = document.getElementById("pointsValue");
     const pointsStatusNode = document.getElementById("pointsStatus");
+    const pointsProgressNode = document.getElementById("pointsProgress");
+    const nextRewardHintNode = document.getElementById("nextRewardHint");
+    const weeklyPromoCardNode = document.getElementById("weeklyPromoCard");
+    const weeklyPromoMessageNode = document.getElementById("weeklyPromoMessage");
     const redeemButtons = document.querySelectorAll(".redeem-btn");
     const regionSelect = document.getElementById("regionSelect");
     const menuPriceNodes = document.querySelectorAll(".menu-price");
@@ -411,8 +459,13 @@
 
     let cart = [];
     let points = 0;
+    const rewards = [80, 150, 280];
+    const promoDay = 2;
     const usdRate = 4000;
     let activeRegion = "co";
+
+    const isPromoDay = () => new Date().getDay() === promoDay;
+    const getPointsMultiplier = () => (isPromoDay() ? 2 : 1);
 
     const formatMoney = (valueInCop) => {
       if (activeRegion === "us") {
@@ -434,6 +487,47 @@
       }
       cartStatusNode.textContent = message;
       cartStatusNode.classList.remove("hidden");
+    };
+
+    const updateWeeklyPromo = () => {
+      const promoActive = isPromoDay();
+
+      if (weeklyPromoMessageNode) {
+        weeklyPromoMessageNode.textContent = promoActive
+          ? t("pointsWeeklyPromoActive")
+          : t("pointsWeeklyPromoInactive");
+      }
+
+      if (weeklyPromoCardNode) {
+        weeklyPromoCardNode.classList.toggle("border-emerald-200/30", !promoActive);
+        weeklyPromoCardNode.classList.toggle("ring-emerald-200/25", !promoActive);
+        weeklyPromoCardNode.classList.toggle("border-amber-200/50", promoActive);
+        weeklyPromoCardNode.classList.toggle("ring-amber-200/40", promoActive);
+      }
+    };
+
+    const updateLoyaltyProgress = () => {
+      const nextReward = rewards.find((cost) => points < cost);
+
+      if (pointsProgressNode) {
+        if (nextReward) {
+          const previousReward = Math.max(0, ...rewards.filter((cost) => cost <= points));
+          const segmentTotal = nextReward - previousReward;
+          const segmentDone = points - previousReward;
+          const percent = Math.min(100, Math.round((segmentDone / segmentTotal) * 100));
+          pointsProgressNode.style.width = `${percent}%`;
+        } else {
+          pointsProgressNode.style.width = "100%";
+        }
+      }
+
+      if (nextRewardHintNode) {
+        if (nextReward) {
+          nextRewardHintNode.textContent = t("pointsNextReward", { n: nextReward - points });
+        } else {
+          nextRewardHintNode.textContent = t("pointsAllRewards");
+        }
+      }
     };
 
     const renderCart = () => {
@@ -539,15 +633,18 @@
         }
 
         const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
-        const earned = Math.floor(total / 1000);
+        const earned = Math.floor(total / 1000) * getPointsMultiplier();
         points += earned;
 
         if (pointsNode) {
           pointsNode.textContent = String(points);
         }
+        updateLoyaltyProgress();
 
         if (pointsStatusNode) {
-          pointsStatusNode.textContent = t("purchaseCompleted", { n: earned });
+          pointsStatusNode.textContent = isPromoDay()
+            ? t("purchaseCompletedPromo", { n: earned })
+            : t("purchaseCompleted", { n: earned });
         }
 
         cart = [];
@@ -571,6 +668,7 @@
         if (pointsNode) {
           pointsNode.textContent = String(points);
         }
+        updateLoyaltyProgress();
         if (pointsStatusNode) {
           pointsStatusNode.textContent = t("redeemed", { n: cost });
         }
@@ -612,10 +710,14 @@
       if (pointsStatusNode && points === 0) {
         pointsStatusNode.textContent = t("pointsEmpty");
       }
+      updateWeeklyPromo();
+      updateLoyaltyProgress();
     });
 
     updateMenuPrices();
     renderCart();
+    updateWeeklyPromo();
+    updateLoyaltyProgress();
   };
 
   wireFormValidation("applicationForm", "formStatus", "registerSuccess");
