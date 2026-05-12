@@ -64,6 +64,19 @@ ai-engineering-company-project-monorepo/
 
 ---
 
+## Ejecutar localmente en Codespaces (Hito 1 Web)
+
+Para ejecutar el sitio estático desde la raíz del repositorio:
+
+```bash
+npx http-server . -p 3000 -a 0.0.0.0
+```
+
+- En GitHub Codespaces, abre en el navegador el puerto reenviado `3000`.
+- Los puntos de entrada de este hito son `index.html` y `application.html`.
+
+---
+
 ## Hitos (referencia)
 
 | Hito | Enfoque       | Entregables típicos                              |

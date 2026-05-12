@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de usuario | Brasaland</title>
+    <meta
+      name="description"
+      content="Registro de usuarios de Brasaland para acceder a beneficios y programa digital Brasa Points."
+    />
+    <meta name="robots" content="index,follow" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                bg: "#121212",
+                panel: "#1b1b1b",
+                primary: "#7f1d1d",
+                secondary: "#d97706",
+                neutral: "#f5e6cc",
+                accent: "#7fbf90",
+              },
+            },
+            fontFamily: {
+              title: ["Playfair Display", "serif"],
+              body: ["Manrope", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="min-h-screen bg-brand-bg text-brand-neutral font-body">
+    <div
+      class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_15%,rgba(217,119,6,0.20),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(127,29,29,0.28),transparent_35%),linear-gradient(180deg,#111111_0%,#1a1a1a_100%)]"
+      aria-hidden="true"
+    ></div>
+
+    <header class="border-b border-white/10 bg-brand-bg/85 backdrop-blur">
+      <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6" aria-label="Navegacion registro">
+        <a href="index.html" class="font-title text-2xl font-bold tracking-tight text-brand-neutral">Brasaland</a>
+        <div class="flex items-center gap-2">
+          <button type="button" data-set-lang="es" class="rounded-full border border-white/20 px-3 py-2 text-xs font-bold text-brand-neutral">ES</button>
+          <button type="button" data-set-lang="en" class="rounded-full border border-white/20 px-3 py-2 text-xs font-bold text-brand-neutral">EN</button>
+          <a href="index.html" class="rounded-full border border-brand-secondary/60 px-4 py-2 text-sm font-semibold text-brand-neutral transition hover:border-brand-secondary hover:text-brand-secondary" data-i18n="backHome">Volver al inicio</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+      <section class="mb-8">
+        <h1 class="font-title text-4xl font-extrabold text-brand-neutral" data-i18n="registerTitle">Registro de usuario</h1>
+        <p class="mt-3 max-w-2xl text-amber-50/80" data-i18n="registerSubtitle">
+          Crea tu perfil para gestionar pedidos online y acumular puntos en Brasa Points digital.
+        </p>
+      </section>
+
+      <section class="rounded-3xl border border-white/10 bg-zinc-900/70 p-6 sm:p-8">
+        <form id="applicationForm" novalidate aria-describedby="registerHint" class="space-y-6">
+          <p id="registerHint" class="text-sm text-zinc-300" data-i18n="registerHint">Los campos con * son obligatorios.</p>
+
+          <fieldset class="grid gap-4 md:grid-cols-2">
+            <legend class="mb-1 text-lg font-bold text-white" data-i18n="personalData">Datos personales</legend>
+
+            <div>
+              <label for="firstName" class="mb-1 block text-sm font-semibold text-zinc-100" data-i18n="firstName">Nombre *</label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                required
+                autocomplete="given-name"
+                data-validate="required|min:2"
+                aria-describedby="firstNameError"
+                class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring"
+                placeholder="Ej: Camila"
+                data-i18n-placeholder="firstNamePh"
+              />
+              <p id="firstNameError" data-error-for="firstName" class="mt-1 text-sm text-rose-300" role="alert"></p>
+            </div>
+
+            <div>
+              <label for="lastName" class="mb-1 block text-sm font-semibold text-zinc-100" data-i18n="lastName">Apellido *</label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                required
+                autocomplete="family-name"
+                data-validate="required|min:2"
+                aria-describedby="lastNameError"
+                class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring"
+                placeholder="Ej: Rojas"
+                data-i18n-placeholder="lastNamePh"
+              />
+              <p id="lastNameError" data-error-for="lastName" class="mt-1 text-sm text-rose-300" role="alert"></p>
+            </div>
+
+            <div>
+              <label for="email" class="mb-1 block text-sm font-semibold text-zinc-100" data-i18n="emailLabel">Email *</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                data-validate="required|email"
+                aria-describedby="emailError"
+                class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring"
+                placeholder="Ej: camila@email.com"
+                data-i18n-placeholder="emailPh"
+              />
+              <p id="emailError" data-error-for="email" class="mt-1 text-sm text-rose-300" role="alert"></p>
+            </div>
+
+            <div>
+              <label for="phone" class="mb-1 block text-sm font-semibold text-zinc-100" data-i18n="phoneText">Telefono *</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+                autocomplete="tel"
+                data-validate="required|phone"
+                aria-describedby="phoneError"
+                class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring"
+                placeholder="Ej: +57 300 123 4567"
+                data-i18n-placeholder="phonePh"
+              />
+              <p id="phoneError" data-error-for="phone" class="mt-1 text-sm text-rose-300" role="alert"></p>
+            </div>
+          </fieldset>
+
+          <fieldset class="grid gap-4 md:grid-cols-2">
+            <legend class="mb-1 text-lg font-bold text-white" data-i18n="preferences">Preferencias</legend>
+
+            <div>
+              <label for="country" class="mb-1 block text-sm font-semibold text-zinc-100" data-i18n="country">Pais *</label>
+              <select
+                id="country"
+                name="country"
+                required
+                data-validate="required"
+                aria-describedby="countryError"
+                class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring"
+              >
+                <option value="" data-i18n="selectOption">Selecciona una opcion</option>
+                <option value="colombia" data-i18n="countryCo">Colombia</option>
+                <option value="usa_florida" data-i18n="countryUs">Estados Unidos (Florida)</option>
+              </select>
+              <p id="countryError" data-error-for="country" class="mt-1 text-sm text-rose-300" role="alert"></p>
+            </div>
+
+            <div>
+              <label for="favoriteCategory" class="mb-1 block text-sm font-semibold text-zinc-100" data-i18n="favoriteCategory">Categoria favorita *</label>
+              <select
+                id="favoriteCategory"
+                name="favoriteCategory"
+                required
+                data-validate="required"
+                aria-describedby="favoriteCategoryError"
+                class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring"
+              >
+                <option value="" data-i18n="selectOption">Selecciona una opcion</option>
+                <option value="carnes" data-i18n="catMeat">Carnes a la brasa</option>
+                <option value="burgers" data-i18n="catBurgers">Hamburguesas artesanales</option>
+                <option value="acompanamientos" data-i18n="catSides">Acompanamientos</option>
+                <option value="bebidas" data-i18n="catDrinks">Bebidas</option>
+              </select>
+              <p id="favoriteCategoryError" data-error-for="favoriteCategory" class="mt-1 text-sm text-rose-300" role="alert"></p>
+            </div>
+          </fieldset>
+
+          <div class="flex items-start gap-3">
+            <input
+              id="consent"
+              name="consent"
+              type="checkbox"
+              required
+              data-validate="required"
+              aria-describedby="consentError"
+              class="mt-1 h-5 w-5 rounded border-white/20 bg-zinc-900 text-amber-400"
+            />
+            <label for="consent" class="text-sm text-zinc-200" data-i18n="consent">
+              Acepto terminos, privacidad y comunicacion de beneficios Brasaland. *
+            </label>
+          </div>
+          <p id="consentError" data-error-for="consent" class="text-sm text-rose-300" role="alert"></p>
+
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <button type="submit" class="rounded-full bg-brand-secondary px-6 py-3 font-bold text-brand-bg transition hover:bg-orange-500" data-i18n="createAccount">Crear cuenta</button>
+            <button type="reset" id="resetFormButton" class="rounded-full border border-white/25 px-6 py-3 font-semibold text-zinc-100 transition hover:border-zinc-200" data-i18n="clearForm">Limpiar formulario</button>
+          </div>
+
+          <p id="formStatus" class="hidden rounded-xl border border-emerald-300/40 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-brand-bg/90">
+      <div class="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm text-zinc-300 sm:px-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="font-title text-xl font-bold text-brand-neutral">Brasaland</p>
+          <p class="mt-1" data-i18n="footerRegister">Registro de usuarios y beneficios Brasa Points</p>
+        </div>
+
+        <div class="text-left md:text-right">
+          <p><a href="mailto:contacto@brasaland.com" class="font-semibold text-brand-secondary hover:text-orange-400">contacto@brasaland.com</a></p>
+          <p><a href="tel:+573005550101" class="font-semibold text-brand-secondary hover:text-orange-400">+57 300 555 0101</a></p>
+          <p class="mt-1 text-xs text-zinc-400">© 2026 Brasaland. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="validation.js" defer></script>
+  </body>
+</html>

@@ -64,6 +64,19 @@ ai-engineering-company-project-monorepo/
 
 ---
 
+## Run locally in Codespaces (Milestone 1 Web)
+
+To run the static website locally from the repository root:
+
+```bash
+npx http-server . -p 3000 -a 0.0.0.0
+```
+
+- In GitHub Codespaces, open the forwarded port `3000` in browser.
+- Entry points for this milestone are `index.html` and `application.html`.
+
+---
+
 ## Milestones (reference)
 
 | Milestone | Focus        | Typical deliverables                        |

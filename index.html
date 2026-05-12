@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brasaland | Cocina a la Brasa</title>
+    <meta
+      name="description"
+      content="Brasaland: restaurante especializado en cocina a la brasa. Menu artesanal, pedidos online, carrito y programa de fidelizacion digital."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="Brasaland | Cocina a la Brasa" />
+    <meta
+      property="og:description"
+      content="Descubre el menu de Brasaland, agrega productos al carrito y conoce nuestro programa de fidelizacion."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <link rel="canonical" href="https://example.com/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                bg: "#121212",
+                panel: "#1b1b1b",
+                primary: "#7f1d1d",
+                secondary: "#d97706",
+                neutral: "#f5e6cc",
+                accent: "#7fbf90",
+              },
+            },
+            fontFamily: {
+              title: ["Playfair Display", "serif"],
+              body: ["Manrope", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Brasaland",
+        "servesCuisine": "Cocina a la brasa",
+        "url": "https://example.com/",
+        "telephone": "+57-300-555-0101",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CO"
+        },
+        "hasMenu": "https://example.com/#menu"
+      }
+    </script>
+  </head>
+  <body class="bg-brand-bg text-brand-neutral font-body">
+    <a
+      id="skipLink"
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-amber-300 focus:px-4 focus:py-2 focus:font-semibold focus:text-zinc-950"
+      data-i18n="skipLink"
+    >
+      Saltar al contenido principal
+    </a>
+
+    <div
+      class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_15%,rgba(217,119,6,0.20),transparent_35%),radial-gradient(circle_at_85%_10%,rgba(127,29,29,0.28),transparent_35%),linear-gradient(180deg,#111111_0%,#1a1a1a_100%)]"
+      aria-hidden="true"
+    ></div>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-brand-bg/85 backdrop-blur">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6" aria-label="Navegacion principal">
+        <a href="#contenido" class="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">
+          <svg width="42" height="42" viewBox="0 0 48 48" aria-hidden="true" class="rounded-full bg-gradient-to-br from-amber-400 to-red-500 p-1">
+            <circle cx="24" cy="24" r="22" fill="rgba(0,0,0,0.2)" />
+            <path d="M10 22h28c0 5-6 9-14 9s-14-4-14-9Z" fill="#fcd34d" />
+            <rect x="12" y="31" width="24" height="5" rx="2.5" fill="#fb7185" />
+            <rect x="16" y="17" width="16" height="3" rx="1.5" fill="#fde68a" />
+          </svg>
+          <span class="font-title text-2xl font-bold tracking-tight text-brand-neutral">Brasaland</span>
+        </a>
+
+        <ul class="hidden items-center gap-6 text-sm font-semibold md:flex">
+          <li><a href="#menu" class="transition hover:text-amber-300" data-i18n="navMenu">Menu</a></li>
+          <li><a href="#fidelizacion" class="transition hover:text-amber-300" data-i18n="navPoints">Brasaland points</a></li>
+          <li><a href="#contacto" class="transition hover:text-amber-300" data-i18n="navContact">Contacto</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <button type="button" data-set-lang="es" class="rounded-full border border-white/20 px-3 py-2 text-xs font-bold text-brand-neutral">ES</button>
+          <button type="button" data-set-lang="en" class="rounded-full border border-white/20 px-3 py-2 text-xs font-bold text-brand-neutral">EN</button>
+          <a
+            href="application.html"
+            class="rounded-full border border-brand-secondary/60 px-4 py-2 text-sm font-semibold text-brand-neutral transition hover:border-brand-secondary hover:text-brand-secondary"
+            data-i18n="register"
+          >
+            Registrarse
+          </a>
+          <button
+            type="button"
+            id="cartToggle"
+            class="rounded-full bg-gradient-to-r from-brand-secondary to-amber-300 px-5 py-2 text-sm font-extrabold text-zinc-950 shadow-lg shadow-amber-700/40 ring-2 ring-amber-200/70 transition hover:-translate-y-0.5 hover:from-orange-500 hover:to-amber-200"
+            aria-controls="cartPanel"
+            aria-expanded="false"
+          >
+            🛒 <span id="cartToggleLabel" data-i18n="myPurchases">Mis compras</span> (<span id="cartCount">0</span>)
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <section class="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-14 sm:px-6 md:grid-cols-2 md:items-center md:pt-20">
+        <div>
+          <p class="mb-4 inline-flex rounded-full border border-amber-300/40 bg-amber-300/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-200" data-i18n="heroTag">
+            Restaurante especializado en cocina a la brasa
+          </p>
+          <h1 class="font-title text-4xl font-extrabold leading-tight text-brand-neutral sm:text-6xl" data-i18n="heroTitle">
+            Brasaland: fuego, sabor artesanal y experiencia memorable.
+          </h1>
+          <p class="mt-5 max-w-xl text-lg text-amber-50/90" data-i18n="heroText">
+            Disfruta carnes a la brasa, hamburguesas artesanales y acompanamientos preparados al momento. Ahora puedes simular tu pedido online, guardar favoritos y sumar puntos con Brasa Points digital.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#menu" class="inline-flex items-center justify-center rounded-full bg-brand-primary px-6 py-3 font-bold text-brand-neutral transition hover:bg-red-900" data-i18n="viewMenu">Ver menu</a>
+            <a href="#menu" class="inline-flex items-center justify-center rounded-full border border-brand-secondary/60 px-6 py-3 font-semibold text-brand-neutral transition hover:border-brand-secondary hover:text-brand-secondary" data-i18n="makeOrder">Hacer pedido</a>
+          </div>
+        </div>
+
+        <figure class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-3 shadow-2xl shadow-red-950/40">
+          <img
+            src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1400&q=80"
+            alt="Hamburguesa a la brasa servida en plato de madera"
+            data-alt-es="Hamburguesa a la brasa servida en plato de madera"
+            data-alt-en="Grilled burger served on a wooden plate"
+            class="h-full w-full rounded-2xl object-cover"
+            loading="lazy"
+          />
+        </figure>
+      </section>
+
+      <section id="menu" class="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 class="font-title text-3xl font-extrabold text-white" data-i18n="menuTitle">Menu Brasaland</h2>
+            <p class="mt-2 text-amber-50/80" data-i18n="menuSubtitle">Selecciona tus favoritos y agregalos a Mis compras.</p>
+          </div>
+          <div class="flex flex-col gap-3 sm:items-end">
+            <label for="regionSelect" class="text-xs font-semibold uppercase tracking-wide text-zinc-300" data-i18n="regionLabel">Pais / Moneda</label>
+            <select
+              id="regionSelect"
+              class="rounded-xl border border-white/20 bg-zinc-950/80 px-3 py-2 text-sm text-zinc-100 outline-none ring-amber-300 transition focus:ring"
+            >
+              <option value="co" data-i18n="regionCo">Colombia (COP)</option>
+              <option value="us" data-i18n="regionUs">Estados Unidos - Florida (USD)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-6 flex flex-wrap items-center gap-2" role="group" aria-label="Filtrar menu por categoria">
+          <button type="button" class="menu-filter rounded-full border border-amber-300 bg-amber-300 px-4 py-2 text-sm font-semibold text-zinc-950" data-filter="all">Todo</button>
+          <button type="button" class="menu-filter rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-zinc-100" data-filter="carnes">Carnes</button>
+          <button type="button" class="menu-filter rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-zinc-100" data-filter="hamburguesas">Hamburguesas</button>
+          <button type="button" class="menu-filter rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-zinc-100" data-filter="acompanamientos">Acompanamientos y bebidas</button>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-3">
+          <article class="menu-category rounded-3xl border border-white/10 bg-zinc-900/70 p-5" data-category="carnes">
+            <h3 class="text-xl font-bold text-amber-200">Carnes a la brasa</h3>
+            <ul class="mt-4 space-y-4">
+              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex min-w-0 items-start gap-3">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80" alt="Punta de anca a la brasa" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
+                    <div class="min-w-0">
+                    <p class="font-semibold text-white">Punta de anca 300g</p>
+                    <p class="mt-1 text-sm text-zinc-300">Corte premium con mantequilla de ajo y chimichurri.</p>
+                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="49000"></span></p>
+                    </div>
+                  </div>
+                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Punta de anca 300g" data-price="49000" aria-label="Agregar Punta de anca 300g">+</button>
+                </div>
+              </li>
+              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex min-w-0 items-start gap-3">
+                    <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&w=300&q=80" alt="Costilla BBQ a la brasa" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
+                    <div class="min-w-0">
+                    <p class="font-semibold text-white">Costilla BBQ brasaland</p>
+                    <p class="mt-1 text-sm text-zinc-300">Coccion lenta, salsa de la casa y toque ahumado.</p>
+                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="42000"></span></p>
+                    </div>
+                  </div>
+                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Costilla BBQ brasaland" data-price="42000" aria-label="Agregar Costilla BBQ brasaland">+</button>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="menu-category rounded-3xl border border-white/10 bg-zinc-900/70 p-5" data-category="hamburguesas">
+            <h3 class="text-xl font-bold text-amber-200">Hamburguesas artesanales</h3>
+            <ul class="mt-4 space-y-4">
+              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex min-w-0 items-start gap-3">
+                    <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=300&q=80" alt="Hamburguesa doble a la brasa" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
+                    <div class="min-w-0">
+                    <p class="font-semibold text-white">Brasa Burger Doble</p>
+                    <p class="mt-1 text-sm text-zinc-300">Doble carne, queso cheddar, cebolla crispy y salsa brasa.</p>
+                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="34000"></span></p>
+                    </div>
+                  </div>
+                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Brasa Burger Doble" data-price="34000" aria-label="Agregar Brasa Burger Doble">+</button>
+                </div>
+              </li>
+              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex min-w-0 items-start gap-3">
+                    <img src="https://images.unsplash.com/photo-1606756790138-261d2b21cd75?auto=format&fit=crop&w=300&q=80" alt="Hamburguesa de pollo grill" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
+                    <div class="min-w-0">
+                    <p class="font-semibold text-white">Chicken Grill Burger</p>
+                    <p class="mt-1 text-sm text-zinc-300">Pechuga marinada, queso suizo y mayonesa de cilantro.</p>
+                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="29000"></span></p>
+                    </div>
+                  </div>
+                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Chicken Grill Burger" data-price="29000" aria-label="Agregar Chicken Grill Burger">+</button>
+                </div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="menu-category rounded-3xl border border-white/10 bg-zinc-900/70 p-5" data-category="acompanamientos">
+            <h3 class="text-xl font-bold text-amber-200">Acompanamientos y bebidas</h3>
+            <ul class="mt-4 space-y-4">
+              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex min-w-0 items-start gap-3">
+                    <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=300&q=80" alt="Papas rusticas" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
+                    <div class="min-w-0">
+                    <p class="font-semibold text-white">Papas rusticas brasa</p>
+                    <p class="mt-1 text-sm text-zinc-300">Papas en casco con pimenton ahumado y dip casero.</p>
+                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="12000"></span></p>
+                    </div>
+                  </div>
+                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Papas rusticas brasa" data-price="12000" aria-label="Agregar Papas rusticas brasa">+</button>
+                </div>
+              </li>
+              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex min-w-0 items-start gap-3">
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" alt="Limonada de panela" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
+                    <div class="min-w-0">
+                    <p class="font-semibold text-white">Limonada de panela</p>
+                    <p class="mt-1 text-sm text-zinc-300">Refrescante, natural y preparada al instante.</p>
+                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="9000"></span></p>
+                    </div>
+                  </div>
+                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Limonada de panela" data-price="9000" aria-label="Agregar Limonada de panela">+</button>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="fidelizacion" class="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+        <div class="rounded-3xl border border-amber-200/40 bg-gradient-to-r from-red-900/45 via-amber-800/30 to-emerald-900/30 p-8 shadow-2xl shadow-amber-700/20 ring-1 ring-amber-200/30">
+          <h2 class="font-title text-3xl font-extrabold text-brand-neutral" data-i18n="pointsTitle">Brasaland points</h2>
+          <p class="mt-3 max-w-3xl text-amber-50/90" data-i18n="pointsLead">
+            Por cada compra acumulas puntos. Puedes canjear recompensas para mejorar tu experiencia en Brasaland.
+          </p>
+          <p class="mt-3 inline-flex rounded-full border border-emerald-200/40 bg-emerald-300/15 px-4 py-1.5 text-sm font-bold text-emerald-100" data-i18n="pointsPromo">
+            Registrate y participa
+          </p>
+
+          <div class="mt-6 grid gap-5 md:grid-cols-3">
+            <article class="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <p class="text-sm text-zinc-300" data-i18n="yourPoints">Tus puntos</p>
+              <p id="pointsValue" class="mt-2 text-4xl font-extrabold text-brand-accent">0</p>
+            </article>
+            <article class="rounded-2xl border border-white/10 bg-black/20 p-5 md:col-span-2">
+              <p class="text-sm text-zinc-300" data-i18n="rewardsAvailable">Recompensas disponibles</p>
+              <div class="mt-3 flex flex-col gap-3 sm:flex-row">
+                <button type="button" class="redeem-btn rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-zinc-100" data-cost="80">Canjear bebida gratis (80 pts)</button>
+                <button type="button" class="redeem-btn rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-zinc-100" data-cost="150">Canjear acompanamiento (150 pts)</button>
+                <button type="button" class="redeem-btn rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-zinc-100" data-cost="280">Canjear burger clasica (280 pts)</button>
+              </div>
+              <p id="pointsStatus" class="mt-3 text-sm text-zinc-300" role="status" aria-live="polite" data-i18n="pointsEmpty">Aun no tienes puntos acumulados.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6">
+        <div class="grid gap-6 lg:grid-cols-2">
+          <article class="rounded-3xl border border-white/10 bg-zinc-900/70 p-8">
+            <h2 class="font-title text-3xl font-extrabold text-brand-neutral" data-i18n="contactTitle">Contacto</h2>
+            <p class="mt-3 text-amber-50/80" data-i18n="contactText">Hablemos sobre reservas, eventos o alianzas comerciales.</p>
+            <ul class="mt-6 space-y-3 text-zinc-200">
+              <li><strong class="text-white">Direccion:</strong> Av. Brasa 145, Medellin</li>
+              <li><strong class="text-white">Telefono:</strong> +57 300 555 0101</li>
+              <li><strong class="text-white">Email:</strong> contacto@brasaland.com</li>
+              <li><strong class="text-white">Horario:</strong> Lun a Dom · 12:00 pm - 10:30 pm</li>
+            </ul>
+          </article>
+
+          <article class="rounded-3xl border border-white/10 bg-zinc-900/70 p-8">
+            <form id="contactForm" novalidate class="space-y-4" aria-describedby="contactHint">
+              <p id="contactHint" class="text-sm text-zinc-300">Todos los campos son obligatorios.</p>
+              <div>
+                <label for="contactName" class="mb-1 block text-sm font-semibold text-zinc-100">Nombre completo</label>
+                <input id="contactName" name="contactName" type="text" required data-validate="required|min:3" aria-describedby="contactNameError" class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring" placeholder="Ej: Laura Martinez" />
+                <p id="contactNameError" data-error-for="contactName" class="mt-1 text-sm text-rose-300" role="alert"></p>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="contactEmail" class="mb-1 block text-sm font-semibold text-zinc-100">Email</label>
+                  <input id="contactEmail" name="contactEmail" type="email" required data-validate="required|email" aria-describedby="contactEmailError" class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring" placeholder="Ej: laura@email.com" />
+                  <p id="contactEmailError" data-error-for="contactEmail" class="mt-1 text-sm text-rose-300" role="alert"></p>
+                </div>
+                <div>
+                  <label for="contactPhone" class="mb-1 block text-sm font-semibold text-zinc-100">Telefono</label>
+                  <input id="contactPhone" name="contactPhone" type="tel" required data-validate="required|phone" aria-describedby="contactPhoneError" class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring" placeholder="Ej: +57 300 123 4567" />
+                  <p id="contactPhoneError" data-error-for="contactPhone" class="mt-1 text-sm text-rose-300" role="alert"></p>
+                </div>
+              </div>
+              <div>
+                <label for="contactMessage" class="mb-1 block text-sm font-semibold text-zinc-100">Mensaje</label>
+                <textarea id="contactMessage" name="contactMessage" rows="4" required data-validate="required|min:12|max:500" aria-describedby="contactMessageError" class="w-full rounded-xl border border-white/15 bg-zinc-950/70 px-4 py-3 text-zinc-100 outline-none ring-amber-300 transition focus:ring" placeholder="Escribe tu mensaje"></textarea>
+                <p id="contactMessageError" data-error-for="contactMessage" class="mt-1 text-sm text-rose-300" role="alert"></p>
+              </div>
+              <button type="submit" class="rounded-full bg-brand-secondary px-6 py-3 font-bold text-brand-bg transition hover:bg-orange-500">Enviar contacto</button>
+              <p id="contactStatus" class="hidden rounded-xl border border-emerald-300/40 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200" role="status" aria-live="polite"></p>
+            </form>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-brand-bg/90">
+      <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-zinc-300 sm:px-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="font-title text-xl font-bold text-brand-neutral">Brasaland</p>
+          <p class="mt-1" data-i18n="footerSubtitle">Cocina a la brasa · Colombia y Florida</p>
+        </div>
+
+        <nav aria-label="Enlaces del pie" class="flex flex-wrap gap-4">
+          <a href="#menu" class="transition hover:text-amber-300">Menu</a>
+          <a href="#fidelizacion" class="transition hover:text-amber-300">Brasaland points</a>
+          <a href="#contacto" class="transition hover:text-amber-300">Contacto</a>
+        </nav>
+
+        <div class="text-left md:text-right">
+          <p><a href="mailto:contacto@brasaland.com" class="font-semibold text-brand-secondary hover:text-orange-400">contacto@brasaland.com</a></p>
+          <p><a href="tel:+573005550101" class="font-semibold text-brand-secondary hover:text-orange-400">+57 300 555 0101</a></p>
+          <p class="mt-1 text-xs text-zinc-400">© 2026 Brasaland. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <aside
+      id="cartPanel"
+      class="fixed right-0 top-0 z-50 h-full w-full max-w-md translate-x-full border-l border-white/10 bg-zinc-950/95 p-6 transition-transform duration-300"
+      aria-label="Mis compras"
+    >
+      <div class="flex items-center justify-between">
+        <h2 class="font-title text-2xl font-bold text-white">🛒 Mis compras</h2>
+        <button id="closeCartBtn" type="button" class="rounded-full border border-white/20 px-3 py-1 text-sm">Cerrar</button>
+      </div>
+      <ul id="cartItems" class="mt-5 space-y-3"></ul>
+      <div class="mt-6 border-t border-white/10 pt-4">
+        <p class="flex items-center justify-between text-sm text-zinc-300">
+          <span>Total</span>
+          <strong id="cartTotal" class="text-amber-300">$0 COP</strong>
+        </p>
+      </div>
+      <div class="mt-5 grid gap-3">
+        <button id="checkoutBtn" type="button" class="rounded-full bg-brand-primary px-6 py-3 font-bold text-brand-neutral transition hover:bg-red-900" data-i18n="checkout">Finalizar compra simulada</button>
+        <button id="clearCartBtn" type="button" class="rounded-full border border-white/25 px-6 py-3 font-semibold text-zinc-100 transition hover:border-zinc-200" data-i18n="clearPurchases">Vaciar Mis compras</button>
+      </div>
+      <p id="cartStatus" class="mt-4 hidden rounded-xl border border-emerald-300/40 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200" role="status" aria-live="polite"></p>
+    </aside>
+
+    <a
+      href="https://wa.me/573005550101?text=Hola%20Brasaland%2C%20quiero%20informacion%20sobre%20menu%20y%20reservas"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-green-500 px-4 py-3 font-bold text-white shadow-lg shadow-green-900/40 transition hover:bg-green-400"
+      aria-label="Contactar por WhatsApp"
+    >
+      <span>WhatsApp</span>
+    </a>
+
+    <script src="validation.js" defer></script>
+  </body>
+</html>
