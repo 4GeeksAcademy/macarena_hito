@@ -455,7 +455,10 @@
     const regionSelect = document.getElementById("regionSelect");
     const menuPriceNodes = document.querySelectorAll(".menu-price");
     const filterButtons = document.querySelectorAll(".menu-filter");
-    const menuCategoryNodes = document.querySelectorAll(".menu-item-card");
+    const menuPanelNode = document.getElementById("menuCategoryPanel");
+    const menuPanelTitleNode = document.getElementById("menuPanelTitle");
+    const menuPanelListNode = document.getElementById("menuPanelList");
+    const closeMenuPanelBtn = document.getElementById("closeMenuPanelBtn");
 
     let cart = [];
     let points = 0;
@@ -463,6 +466,45 @@
     const promoDay = 2;
     const usdRate = 4000;
     let activeRegion = "co";
+    let activeMenuCategory = "all";
+
+    const categoryMenuData = {
+      carnes: {
+        title: "Carta de carnes",
+        items: [
+          { name: "Punta de anca 300g", price: 49000 },
+          { name: "Costilla BBQ brasaland", price: 42000 },
+          { name: "Churrasco a la brasa 250g", price: 45000 },
+        ],
+      },
+      hamburguesas: {
+        title: "Carta de hamburguesas",
+        items: [
+          { name: "Brasa Burger Doble", price: 34000 },
+          { name: "Chicken Grill Burger", price: 29000 },
+          { name: "Burger Clasica Brasa", price: 26000 },
+        ],
+      },
+      acompanamientos: {
+        title: "Carta de acompanamientos y bebidas",
+        items: [
+          { name: "Papas rusticas brasa", price: 12000 },
+          { name: "Limonada de panela", price: 9000 },
+          { name: "Refresco cola 400ml", price: 7000 },
+          { name: "Refresco limon 400ml", price: 7000 },
+          { name: "Cerveza lager nacional", price: 11000 },
+          { name: "Cerveza artesanal IPA", price: 15000 },
+        ],
+      },
+      combos: {
+        title: "Carta de combos",
+        items: [
+          { name: "Combo Parrillero Clasico", price: 52000 },
+          { name: "Combo Burger Doble", price: 46000 },
+          { name: "Combo Familiar Brasa", price: 58000 },
+        ],
+      },
+    };
 
     const isPromoDay = () => new Date().getDay() === promoDay;
     const getPointsMultiplier = () => (isPromoDay() ? 2 : 1);
@@ -479,6 +521,53 @@
         const basePrice = Number(node.dataset.price || "0");
         node.textContent = formatMoney(basePrice);
       });
+    };
+
+    const setActiveFilter = (selectedFilter) => {
+      filterButtons.forEach((btn) => {
+        const isActive = (btn.dataset.filter || "all") === selectedFilter;
+        btn.classList.toggle("bg-amber-300", isActive);
+        btn.classList.toggle("border-amber-300", isActive);
+        btn.classList.toggle("text-zinc-950", isActive);
+        btn.classList.toggle("border-white/25", !isActive);
+        btn.classList.toggle("text-zinc-100", !isActive);
+      });
+    };
+
+    const setMenuPanelOpen = (open) => {
+      if (!menuPanelNode) {
+        return;
+      }
+      menuPanelNode.classList.toggle("hidden", !open);
+      menuPanelNode.setAttribute("aria-hidden", open ? "false" : "true");
+      document.body.classList.toggle("overflow-hidden", open);
+    };
+
+    const renderCategoryPanel = (category) => {
+      const categoryData = categoryMenuData[category];
+      if (!categoryData || !menuPanelTitleNode || !menuPanelListNode) {
+        return;
+      }
+
+      menuPanelTitleNode.textContent = categoryData.title;
+      menuPanelListNode.innerHTML = categoryData.items
+        .map(
+          (item) =>
+            `<li class="flex items-center justify-between rounded-xl border border-white/10 bg-black/25 px-4 py-3">` +
+            `<div class="min-w-0">` +
+            `<p class="text-sm text-zinc-100">${item.name}</p>` +
+            `<p class="text-sm font-bold text-amber-300">${formatMoney(item.price)}</p>` +
+            `</div>` +
+            `<button type="button" class="panel-add-to-cart shrink-0 rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="${item.name}" data-price="${item.price}" aria-label="Agregar ${item.name}">+</button>` +
+            `</li>`
+        )
+        .join("");
+    };
+
+    const closeCategoryPanel = () => {
+      activeMenuCategory = "all";
+      setMenuPanelOpen(false);
+      setActiveFilter("all");
     };
 
     const showCartStatus = (message) => {
@@ -680,28 +769,75 @@
         activeRegion = regionSelect.value === "us" ? "us" : "co";
         renderCart();
         updateMenuPrices();
+        if (activeMenuCategory !== "all") {
+          renderCategoryPanel(activeMenuCategory);
+        }
       });
     }
 
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const selectedFilter = button.dataset.filter || "all";
+        setActiveFilter(selectedFilter);
 
-        filterButtons.forEach((btn) => {
-          const isActive = btn === button;
-          btn.classList.toggle("bg-amber-300", isActive);
-          btn.classList.toggle("border-amber-300", isActive);
-          btn.classList.toggle("text-zinc-950", isActive);
-          btn.classList.toggle("border-white/25", !isActive);
-          btn.classList.toggle("text-zinc-100", !isActive);
-        });
+        if (selectedFilter === "all") {
+          closeCategoryPanel();
+          return;
+        }
 
-        menuCategoryNodes.forEach((card) => {
-          const cardCategory = card.dataset.category;
-          const visible = selectedFilter === "all" || cardCategory === selectedFilter;
-          card.classList.toggle("hidden", !visible);
-        });
+        activeMenuCategory = selectedFilter;
+        renderCategoryPanel(selectedFilter);
+        setMenuPanelOpen(true);
       });
+    });
+
+    if (closeMenuPanelBtn) {
+      closeMenuPanelBtn.addEventListener("click", closeCategoryPanel);
+    }
+
+    if (menuPanelNode) {
+      menuPanelNode.addEventListener("click", (event) => {
+        if (event.target === menuPanelNode) {
+          closeCategoryPanel();
+        }
+      });
+    }
+
+    if (menuPanelListNode) {
+      menuPanelListNode.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) {
+          return;
+        }
+
+        const button = target.closest(".panel-add-to-cart");
+        if (!(button instanceof HTMLButtonElement)) {
+          return;
+        }
+
+        const name = button.dataset.name;
+        const price = Number(button.dataset.price || "0");
+        if (!name || Number.isNaN(price) || price <= 0) {
+          return;
+        }
+
+        const existing = cart.find((item) => item.name === name);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name, price, qty: 1 });
+        }
+
+        renderCart();
+        setCartOpen(true);
+        showCartStatus(`Agregado al carrito: ${name}`);
+      });
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && activeMenuCategory !== "all") {
+        closeCategoryPanel();
+      }
     });
 
     window.addEventListener("site-language-changed", () => {
