@@ -17,13 +17,58 @@
       makeOrder: "Hacer pedido",
       menuTitle: "Menu Brasaland",
       menuSubtitle: "Selecciona tus favoritos y agregalos a Mis compras.",
+      menuFilterTop: "Los mas pedidos",
+      menuFilterMeats: "Carnes",
+      menuFilterBurgers: "Hamburguesas",
+      menuFilterSidesDrinks: "Acompanamientos y bebidas",
+      menuFilterCombos: "Combos",
+      menuTagMeats: "Carnes",
+      menuTagBurgers: "Hamburguesas",
+      menuTagSides: "Acompanamientos",
+      menuTagCombos: "Combos",
+      itemPuntaName: "Punta de anca 300g",
+      itemPuntaDesc: "Corte premium con mantequilla de ajo y chimichurri.",
+      itemRibsName: "Costilla BBQ brasaland",
+      itemRibsDesc: "Coccion lenta, salsa de la casa y toque ahumado.",
+      itemBrasaBurgerName: "Brasa Burger Doble",
+      itemBrasaBurgerDesc: "Doble carne, queso cheddar, cebolla crispy y salsa brasa.",
+      itemChickenBurgerName: "Chicken Grill Burger",
+      itemChickenBurgerDesc: "Pechuga marinada, queso suizo y mayonesa de cilantro.",
+      itemFriesName: "Papas rusticas brasa",
+      itemFriesDesc: "Papas en casco con pimenton ahumado y dip casero.",
+      itemLemonadeName: "Limonada de panela",
+      itemLemonadeDesc: "Refrescante, natural y preparada al instante.",
+      itemComboParrilleroName: "Combo Parrillero Clasico",
+      itemComboParrilleroDesc: "Carne a la brasa, papas rusticas y bebida.",
+      itemComboBurgerName: "Combo Burger Doble",
+      itemComboBurgerDesc: "Brasa Burger Doble, papas y gaseosa.",
+      itemComboFamilyName: "Combo Familiar Brasa",
+      itemComboFamilyDesc: "Mix de carnes, 2 acompanamientos y 2 bebidas.",
+      panelTitleMeats: "Carta de carnes",
+      panelTitleBurgers: "Carta de hamburguesas",
+      panelTitleSides: "Carta de acompanamientos y bebidas",
+      panelTitleCombos: "Carta de combos",
+      itemChurrascoName: "Churrasco a la brasa 250g",
+      itemClassicBurgerName: "Burger Clasica Brasa",
+      itemSodaColaName: "Refresco cola 400ml",
+      itemSodaLemonName: "Refresco limon 400ml",
+      itemBeerLagerName: "Cerveza lager nacional",
+      itemBeerIpaName: "Cerveza artesanal IPA",
       regionLabel: "Pais / Moneda",
       regionCo: "Colombia (COP)",
       regionUs: "Estados Unidos - Florida (USD)",
       ordersTitle: "Pedidos online (simulado)",
       ordersText:
         "Agrega productos desde el menu, revisa Mis compras y simula tu compra. No se conecta con backend: es una experiencia frontend para validar el flujo.",
-      checkout: "Finalizar compra simulada",
+      checkout: "Finalizar compra",
+      paymentTitle: "Elegir metodo de pago",
+      paymentSubtitle: "Selecciona como quieres pagar tu pedido.",
+      paymentTotal: "Total a pagar",
+      paymentMethodCard: "Tarjeta debito/credito",
+      paymentMethodWallet: "Billetera digital",
+      paymentMethodCash: "Pago en caja",
+      paymentCancel: "Cancelar",
+      paymentConfirm: "Pagar ahora",
       clearPurchases: "Vaciar Mis compras",
       pointsTitle: "Brasaland points",
       pointsTopTag: "Beneficios exclusivos",
@@ -115,13 +160,58 @@
       makeOrder: "Place order",
       menuTitle: "Brasaland Menu",
       menuSubtitle: "Choose your favorites and add them to My purchases.",
+      menuFilterTop: "Most ordered",
+      menuFilterMeats: "Meats",
+      menuFilterBurgers: "Burgers",
+      menuFilterSidesDrinks: "Sides and drinks",
+      menuFilterCombos: "Combos",
+      menuTagMeats: "Meats",
+      menuTagBurgers: "Burgers",
+      menuTagSides: "Sides",
+      menuTagCombos: "Combos",
+      itemPuntaName: "Sirloin steak 300g",
+      itemPuntaDesc: "Premium cut with garlic butter and chimichurri.",
+      itemRibsName: "Brasaland BBQ ribs",
+      itemRibsDesc: "Slow-cooked ribs with house sauce and smoky finish.",
+      itemBrasaBurgerName: "Double Brasa Burger",
+      itemBrasaBurgerDesc: "Double beef, cheddar, crispy onion, and brasa sauce.",
+      itemChickenBurgerName: "Chicken Grill Burger",
+      itemChickenBurgerDesc: "Marinated chicken breast, Swiss cheese, and cilantro mayo.",
+      itemFriesName: "Brasa rustic fries",
+      itemFriesDesc: "Potato wedges with smoked paprika and house dip.",
+      itemLemonadeName: "Panela lemonade",
+      itemLemonadeDesc: "Refreshing, natural, and freshly made.",
+      itemComboParrilleroName: "Classic Grill Combo",
+      itemComboParrilleroDesc: "Grilled meat, rustic fries, and a drink.",
+      itemComboBurgerName: "Double Burger Combo",
+      itemComboBurgerDesc: "Double Brasa Burger, fries, and soda.",
+      itemComboFamilyName: "Family Brasa Combo",
+      itemComboFamilyDesc: "Mixed meats, 2 sides, and 2 drinks.",
+      panelTitleMeats: "Meat menu",
+      panelTitleBurgers: "Burger menu",
+      panelTitleSides: "Sides and drinks menu",
+      panelTitleCombos: "Combo menu",
+      itemChurrascoName: "Grilled churrasco 250g",
+      itemClassicBurgerName: "Classic Brasa Burger",
+      itemSodaColaName: "Cola soda 400ml",
+      itemSodaLemonName: "Lemon soda 400ml",
+      itemBeerLagerName: "National lager beer",
+      itemBeerIpaName: "Craft IPA beer",
       regionLabel: "Country / Currency",
       regionCo: "Colombia (COP)",
       regionUs: "United States - Florida (USD)",
       ordersTitle: "Online orders (simulated)",
       ordersText:
         "Add products from the menu, review My purchases, and simulate checkout. No backend connection: this is a frontend flow simulation.",
-      checkout: "Complete simulated checkout",
+      checkout: "Complete purchase",
+      paymentTitle: "Choose payment method",
+      paymentSubtitle: "Select how you want to pay for your order.",
+      paymentTotal: "Total to pay",
+      paymentMethodCard: "Debit/credit card",
+      paymentMethodWallet: "Digital wallet",
+      paymentMethodCash: "Pay at counter",
+      paymentCancel: "Cancel",
+      paymentConfirm: "Pay now",
       clearPurchases: "Clear My purchases",
       pointsTitle: "Brasaland points",
       pointsTopTag: "Exclusive benefits",
@@ -445,6 +535,10 @@
     const checkoutBtn = document.getElementById("checkoutBtn");
     const clearCartBtn = document.getElementById("clearCartBtn");
     const cartStatusNode = document.getElementById("cartStatus");
+    const paymentPanelNode = document.getElementById("paymentPanel");
+    const paymentTotalNode = document.getElementById("paymentTotal");
+    const closePaymentBtn = document.getElementById("closePaymentBtn");
+    const confirmPaymentBtn = document.getElementById("confirmPaymentBtn");
     const pointsNode = document.getElementById("pointsValue");
     const pointsStatusNode = document.getElementById("pointsStatus");
     const pointsProgressNode = document.getElementById("pointsProgress");
@@ -470,38 +564,38 @@
 
     const categoryMenuData = {
       carnes: {
-        title: "Carta de carnes",
+        titleKey: "panelTitleMeats",
         items: [
-          { name: "Punta de anca 300g", price: 49000 },
-          { name: "Costilla BBQ brasaland", price: 42000 },
-          { name: "Churrasco a la brasa 250g", price: 45000 },
+          { nameKey: "itemPuntaName", price: 49000 },
+          { nameKey: "itemRibsName", price: 42000 },
+          { nameKey: "itemChurrascoName", price: 45000 },
         ],
       },
       hamburguesas: {
-        title: "Carta de hamburguesas",
+        titleKey: "panelTitleBurgers",
         items: [
-          { name: "Brasa Burger Doble", price: 34000 },
-          { name: "Chicken Grill Burger", price: 29000 },
-          { name: "Burger Clasica Brasa", price: 26000 },
+          { nameKey: "itemBrasaBurgerName", price: 34000 },
+          { nameKey: "itemChickenBurgerName", price: 29000 },
+          { nameKey: "itemClassicBurgerName", price: 26000 },
         ],
       },
       acompanamientos: {
-        title: "Carta de acompanamientos y bebidas",
+        titleKey: "panelTitleSides",
         items: [
-          { name: "Papas rusticas brasa", price: 12000 },
-          { name: "Limonada de panela", price: 9000 },
-          { name: "Refresco cola 400ml", price: 7000 },
-          { name: "Refresco limon 400ml", price: 7000 },
-          { name: "Cerveza lager nacional", price: 11000 },
-          { name: "Cerveza artesanal IPA", price: 15000 },
+          { nameKey: "itemFriesName", price: 12000 },
+          { nameKey: "itemLemonadeName", price: 9000 },
+          { nameKey: "itemSodaColaName", price: 7000 },
+          { nameKey: "itemSodaLemonName", price: 7000 },
+          { nameKey: "itemBeerLagerName", price: 11000 },
+          { nameKey: "itemBeerIpaName", price: 15000 },
         ],
       },
       combos: {
-        title: "Carta de combos",
+        titleKey: "panelTitleCombos",
         items: [
-          { name: "Combo Parrillero Clasico", price: 52000 },
-          { name: "Combo Burger Doble", price: 46000 },
-          { name: "Combo Familiar Brasa", price: 58000 },
+          { nameKey: "itemComboParrilleroName", price: 52000 },
+          { nameKey: "itemComboBurgerName", price: 46000 },
+          { nameKey: "itemComboFamilyName", price: 58000 },
         ],
       },
     };
@@ -549,17 +643,21 @@
         return;
       }
 
-      menuPanelTitleNode.textContent = categoryData.title;
+      menuPanelTitleNode.textContent = t(categoryData.titleKey);
       menuPanelListNode.innerHTML = categoryData.items
         .map(
-          (item) =>
+          (item) => {
+            const itemName = t(item.nameKey);
+            return (
             `<li class="flex items-center justify-between rounded-xl border border-white/10 bg-black/25 px-4 py-3">` +
             `<div class="min-w-0">` +
-            `<p class="text-sm text-zinc-100">${item.name}</p>` +
+            `<p class="text-sm text-zinc-100">${itemName}</p>` +
             `<p class="text-sm font-bold text-amber-300">${formatMoney(item.price)}</p>` +
             `</div>` +
-            `<button type="button" class="panel-add-to-cart shrink-0 rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="${item.name}" data-price="${item.price}" aria-label="Agregar ${item.name}">+</button>` +
+            `<button type="button" class="panel-add-to-cart shrink-0 rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="${itemName}" data-price="${item.price}" aria-label="Agregar ${itemName}">+</button>` +
             `</li>`
+            );
+          }
         )
         .join("");
     };
@@ -576,6 +674,36 @@
       }
       cartStatusNode.textContent = message;
       cartStatusNode.classList.remove("hidden");
+    };
+
+    const setPaymentOpen = (open) => {
+      if (!paymentPanelNode) {
+        return;
+      }
+      paymentPanelNode.classList.toggle("hidden", !open);
+      paymentPanelNode.setAttribute("aria-hidden", open ? "false" : "true");
+      document.body.classList.toggle("overflow-hidden", open);
+    };
+
+    const completeCheckout = () => {
+      const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+      const earned = Math.floor(total / 1000) * getPointsMultiplier();
+      points += earned;
+
+      if (pointsNode) {
+        pointsNode.textContent = String(points);
+      }
+      updateLoyaltyProgress();
+
+      if (pointsStatusNode) {
+        pointsStatusNode.textContent = isPromoDay()
+          ? t("purchaseCompletedPromo", { n: earned })
+          : t("purchaseCompleted", { n: earned });
+      }
+
+      cart = [];
+      renderCart();
+      showCartStatus(t("orderSent"));
     };
 
     const updateWeeklyPromo = () => {
@@ -721,24 +849,35 @@
           return;
         }
 
-        const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
-        const earned = Math.floor(total / 1000) * getPointsMultiplier();
-        points += earned;
-
-        if (pointsNode) {
-          pointsNode.textContent = String(points);
+        if (paymentTotalNode) {
+          const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+          paymentTotalNode.textContent = formatMoney(total);
         }
-        updateLoyaltyProgress();
+        setPaymentOpen(true);
+      });
+    }
 
-        if (pointsStatusNode) {
-          pointsStatusNode.textContent = isPromoDay()
-            ? t("purchaseCompletedPromo", { n: earned })
-            : t("purchaseCompleted", { n: earned });
+    if (closePaymentBtn) {
+      closePaymentBtn.addEventListener("click", () => setPaymentOpen(false));
+    }
+
+    if (confirmPaymentBtn) {
+      confirmPaymentBtn.addEventListener("click", () => {
+        if (cart.length === 0) {
+          setPaymentOpen(false);
+          showCartStatus(t("addBeforeCheckout"));
+          return;
         }
+        completeCheckout();
+        setPaymentOpen(false);
+      });
+    }
 
-        cart = [];
-        renderCart();
-        showCartStatus(t("orderSent"));
+    if (paymentPanelNode) {
+      paymentPanelNode.addEventListener("click", (event) => {
+        if (event.target === paymentPanelNode) {
+          setPaymentOpen(false);
+        }
       });
     }
 
@@ -843,6 +982,9 @@
     window.addEventListener("site-language-changed", () => {
       updateMenuPrices();
       renderCart();
+      if (activeMenuCategory !== "all") {
+        renderCategoryPanel(activeMenuCategory);
+      }
       if (pointsStatusNode && points === 0) {
         pointsStatusNode.textContent = t("pointsEmpty");
       }
@@ -856,8 +998,57 @@
     updateLoyaltyProgress();
   };
 
+  const setupAnchorNavigation = () => {
+    const headerNode = document.querySelector("header");
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+    const getHeaderOffset = () => {
+      if (!headerNode) {
+        return 0;
+      }
+      return Math.ceil(headerNode.getBoundingClientRect().height) + 8;
+    };
+
+    const scrollToHash = (hash, updateHash) => {
+      if (!hash || hash === "#") {
+        return;
+      }
+
+      const targetNode = document.querySelector(hash);
+      if (!targetNode) {
+        return;
+      }
+
+      const top = window.scrollY + targetNode.getBoundingClientRect().top - getHeaderOffset();
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+
+      if (updateHash) {
+        history.pushState(null, "", hash);
+      }
+    };
+
+    anchorLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const hash = link.getAttribute("href") || "";
+        if (!hash.startsWith("#") || !document.querySelector(hash)) {
+          return;
+        }
+
+        event.preventDefault();
+        scrollToHash(hash, true);
+      });
+    });
+
+    if (window.location.hash) {
+      window.requestAnimationFrame(() => {
+        scrollToHash(window.location.hash, false);
+      });
+    }
+  };
+
   wireFormValidation("applicationForm", "formStatus", "registerSuccess");
   wireFormValidation("contactForm", "contactStatus", "contactSuccess");
   setupCartAndLoyalty();
+  setupAnchorNavigation();
   applyTranslations();
 })();
