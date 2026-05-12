@@ -455,7 +455,7 @@
     const regionSelect = document.getElementById("regionSelect");
     const menuPriceNodes = document.querySelectorAll(".menu-price");
     const filterButtons = document.querySelectorAll(".menu-filter");
-    const menuCategoryNodes = document.querySelectorAll(".menu-category");
+    const menuCategoryNodes = document.querySelectorAll(".menu-item-card");
 
     let cart = [];
     let points = 0;

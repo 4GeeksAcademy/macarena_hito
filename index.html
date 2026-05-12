@@ -122,7 +122,7 @@
     </header>
 
     <main id="contenido">
-      <section class="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-14 sm:px-6 md:grid-cols-2 md:items-center md:pt-20">
+      <section class="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-8 sm:px-6 md:grid-cols-2 md:items-start md:pt-12">
         <div>
           <p class="mb-4 inline-flex rounded-full border border-amber-300/40 bg-amber-300/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-200" data-i18n="heroTag">
             Restaurante especializado en cocina a la brasa
@@ -174,103 +174,125 @@
           <button type="button" class="menu-filter rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-zinc-100" data-filter="carnes">Carnes</button>
           <button type="button" class="menu-filter rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-zinc-100" data-filter="hamburguesas">Hamburguesas</button>
           <button type="button" class="menu-filter rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-zinc-100" data-filter="acompanamientos">Acompanamientos y bebidas</button>
+          <button type="button" class="menu-filter rounded-full border border-white/25 px-4 py-2 text-sm font-semibold text-zinc-100" data-filter="combos">Combos</button>
         </div>
 
-        <div class="grid gap-8 lg:grid-cols-3">
-          <article class="menu-category rounded-3xl border border-white/10 bg-zinc-900/70 p-5" data-category="carnes">
-            <h3 class="text-xl font-bold text-amber-200">Carnes a la brasa</h3>
-            <ul class="mt-4 space-y-4">
-              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex min-w-0 items-start gap-3">
-                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80" alt="Punta de anca a la brasa" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
-                    <div class="min-w-0">
-                    <p class="font-semibold text-white">Punta de anca 300g</p>
-                    <p class="mt-1 text-sm text-zinc-300">Corte premium con mantequilla de ajo y chimichurri.</p>
-                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="49000"></span></p>
-                    </div>
-                  </div>
-                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Punta de anca 300g" data-price="49000" aria-label="Agregar Punta de anca 300g">+</button>
-                </div>
-              </li>
-              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex min-w-0 items-start gap-3">
-                    <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&w=300&q=80" alt="Costilla BBQ a la brasa" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
-                    <div class="min-w-0">
-                    <p class="font-semibold text-white">Costilla BBQ brasaland</p>
-                    <p class="mt-1 text-sm text-zinc-300">Coccion lenta, salsa de la casa y toque ahumado.</p>
-                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="42000"></span></p>
-                    </div>
-                  </div>
-                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Costilla BBQ brasaland" data-price="42000" aria-label="Agregar Costilla BBQ brasaland">+</button>
-                </div>
-              </li>
-            </ul>
+        <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="carnes">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Punta de anca a la brasa" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Carnes</p>
+                <p class="mt-1 font-semibold text-white">Punta de anca 300g</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Corte premium con mantequilla de ajo y chimichurri.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="49000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Punta de anca 300g" data-price="49000" aria-label="Agregar Punta de anca 300g">+</button>
+            </div>
           </article>
 
-          <article class="menu-category rounded-3xl border border-white/10 bg-zinc-900/70 p-5" data-category="hamburguesas">
-            <h3 class="text-xl font-bold text-amber-200">Hamburguesas artesanales</h3>
-            <ul class="mt-4 space-y-4">
-              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex min-w-0 items-start gap-3">
-                    <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=300&q=80" alt="Hamburguesa doble a la brasa" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
-                    <div class="min-w-0">
-                    <p class="font-semibold text-white">Brasa Burger Doble</p>
-                    <p class="mt-1 text-sm text-zinc-300">Doble carne, queso cheddar, cebolla crispy y salsa brasa.</p>
-                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="34000"></span></p>
-                    </div>
-                  </div>
-                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Brasa Burger Doble" data-price="34000" aria-label="Agregar Brasa Burger Doble">+</button>
-                </div>
-              </li>
-              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex min-w-0 items-start gap-3">
-                    <img src="https://images.unsplash.com/photo-1606756790138-261d2b21cd75?auto=format&fit=crop&w=300&q=80" alt="Hamburguesa de pollo grill" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
-                    <div class="min-w-0">
-                    <p class="font-semibold text-white">Chicken Grill Burger</p>
-                    <p class="mt-1 text-sm text-zinc-300">Pechuga marinada, queso suizo y mayonesa de cilantro.</p>
-                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="29000"></span></p>
-                    </div>
-                  </div>
-                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Chicken Grill Burger" data-price="29000" aria-label="Agregar Chicken Grill Burger">+</button>
-                </div>
-              </li>
-            </ul>
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="carnes">
+            <img src="https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&dpr=1" alt="Costilla BBQ a la brasa" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Carnes</p>
+                <p class="mt-1 font-semibold text-white">Costilla BBQ brasaland</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Coccion lenta, salsa de la casa y toque ahumado.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="42000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Costilla BBQ brasaland" data-price="42000" aria-label="Agregar Costilla BBQ brasaland">+</button>
+            </div>
           </article>
 
-          <article class="menu-category rounded-3xl border border-white/10 bg-zinc-900/70 p-5" data-category="acompanamientos">
-            <h3 class="text-xl font-bold text-amber-200">Acompanamientos y bebidas</h3>
-            <ul class="mt-4 space-y-4">
-              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex min-w-0 items-start gap-3">
-                    <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=300&q=80" alt="Papas rusticas" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
-                    <div class="min-w-0">
-                    <p class="font-semibold text-white">Papas rusticas brasa</p>
-                    <p class="mt-1 text-sm text-zinc-300">Papas en casco con pimenton ahumado y dip casero.</p>
-                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="12000"></span></p>
-                    </div>
-                  </div>
-                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Papas rusticas brasa" data-price="12000" aria-label="Agregar Papas rusticas brasa">+</button>
-                </div>
-              </li>
-              <li class="group rounded-2xl border border-white/10 bg-black/20 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-black/35 hover:shadow-lg hover:shadow-amber-800/20">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex min-w-0 items-start gap-3">
-                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" alt="Limonada de panela" class="h-20 w-20 shrink-0 rounded-xl border border-white/20 object-cover ring-1 ring-amber-200/30 transition duration-300 group-hover:scale-105" loading="lazy" />
-                    <div class="min-w-0">
-                    <p class="font-semibold text-white">Limonada de panela</p>
-                    <p class="mt-1 text-sm text-zinc-300">Refrescante, natural y preparada al instante.</p>
-                    <p class="mt-2 text-sm font-bold text-amber-300"><span class="menu-price" data-price="9000"></span></p>
-                    </div>
-                  </div>
-                  <button class="add-to-cart rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Limonada de panela" data-price="9000" aria-label="Agregar Limonada de panela">+</button>
-                </div>
-              </li>
-            </ul>
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="hamburguesas">
+            <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=700&q=80" alt="Hamburguesa doble a la brasa" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Hamburguesas</p>
+                <p class="mt-1 font-semibold text-white">Brasa Burger Doble</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Doble carne, queso cheddar, cebolla crispy y salsa brasa.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="34000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Brasa Burger Doble" data-price="34000" aria-label="Agregar Brasa Burger Doble">+</button>
+            </div>
+          </article>
+
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="hamburguesas">
+            <img src="https://images.pexels.com/photos/5474835/pexels-photo-5474835.jpeg?auto=compress&cs=tinysrgb&w=700&h=500&dpr=1" alt="Hamburguesa de pollo grill" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Hamburguesas</p>
+                <p class="mt-1 font-semibold text-white">Chicken Grill Burger</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Pechuga marinada, queso suizo y mayonesa de cilantro.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="29000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Chicken Grill Burger" data-price="29000" aria-label="Agregar Chicken Grill Burger">+</button>
+            </div>
+          </article>
+
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="acompanamientos">
+            <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=700&q=80" alt="Papas rusticas" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Acompanamientos</p>
+                <p class="mt-1 font-semibold text-white">Papas rusticas brasa</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Papas en casco con pimenton ahumado y dip casero.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="12000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Papas rusticas brasa" data-price="12000" aria-label="Agregar Papas rusticas brasa">+</button>
+            </div>
+          </article>
+
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="acompanamientos">
+            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=700&q=80" alt="Limonada de panela" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Acompanamientos</p>
+                <p class="mt-1 font-semibold text-white">Limonada de panela</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Refrescante, natural y preparada al instante.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="9000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Limonada de panela" data-price="9000" aria-label="Agregar Limonada de panela">+</button>
+            </div>
+          </article>
+
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="combos">
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80" alt="Combo parrillero con carne y papas" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Combos</p>
+                <p class="mt-1 font-semibold text-white">Combo Parrillero Clasico</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Carne a la brasa, papas rusticas y bebida.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="52000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Combo Parrillero Clasico" data-price="52000" aria-label="Agregar Combo Parrillero Clasico">+</button>
+            </div>
+          </article>
+
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="combos">
+            <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?auto=format&fit=crop&w=700&q=80" alt="Combo de hamburguesa con papas y bebida" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Combos</p>
+                <p class="mt-1 font-semibold text-white">Combo Burger Doble</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Brasa Burger Doble, papas y gaseosa.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="46000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Combo Burger Doble" data-price="46000" aria-label="Agregar Combo Burger Doble">+</button>
+            </div>
+          </article>
+
+          <article class="menu-item-card group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="combos">
+            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=700&q=80" alt="Combo familiar de parrilla" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />
+            <div class="mt-4 flex items-start justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-xs font-bold uppercase tracking-wider text-amber-300/90">Combos</p>
+                <p class="mt-1 font-semibold text-white">Combo Familiar Brasa</p>
+                <p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">Mix de carnes, 2 acompanamientos y 2 bebidas.</p>
+                <p class="mt-3 text-sm font-bold text-amber-300"><span class="menu-price" data-price="58000"></span></p>
+              </div>
+              <button class="add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="Combo Familiar Brasa" data-price="58000" aria-label="Agregar Combo Familiar Brasa">+</button>
+            </div>
           </article>
         </div>
       </section>
