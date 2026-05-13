@@ -16,7 +16,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_CO" />
-    <link rel="canonical" href="https://example.com/" />
+    <link rel="canonical" href="https://brasaland.com/" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,13 +54,16 @@
         "@type": "Restaurant",
         "name": "Brasaland",
         "servesCuisine": "Cocina a la brasa",
-        "url": "https://example.com/",
+        "url": "https://brasaland.com/",
         "telephone": "+57-300-555-0101",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Av. Brasa 145",
+          "addressLocality": "Medellin",
+          "addressRegion": "Antioquia",
           "addressCountry": "CO"
         },
-        "hasMenu": "https://example.com/#menu"
+        "hasMenu": "https://brasaland.com/#menu"
       }
     </script>
   </head>
@@ -110,6 +113,15 @@
           </a>
           <button
             type="button"
+            id="favoritesToggle"
+            class="rounded-full bg-gradient-to-r from-brand-secondary to-amber-300 px-5 py-2 text-sm font-extrabold text-zinc-950 shadow-lg shadow-amber-700/40 ring-2 ring-amber-200/70 transition hover:-translate-y-0.5 hover:from-orange-500 hover:to-amber-200"
+            aria-controls="favoritesPanel"
+            aria-expanded="false"
+          >
+            ⭐ <span id="favoritesToggleLabel" data-i18n="myFavorites">Mis Favoritos</span> (<span id="favoritesCount">0</span>)
+          </button>
+          <button
+            type="button"
             id="cartToggle"
             class="rounded-full bg-gradient-to-r from-brand-secondary to-amber-300 px-5 py-2 text-sm font-extrabold text-zinc-950 shadow-lg shadow-amber-700/40 ring-2 ring-amber-200/70 transition hover:-translate-y-0.5 hover:from-orange-500 hover:to-amber-200"
             aria-controls="cartPanel"
@@ -155,7 +167,7 @@
         <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 class="font-title text-3xl font-extrabold text-white" data-i18n="menuTitle">Menu Brasaland</h2>
-            <p class="mt-2 text-amber-50/80" data-i18n="menuSubtitle">Selecciona tus favoritos y agregalos a Mis compras.</p>
+            <p class="mt-2 text-amber-50/95" data-i18n="menuSubtitle">Selecciona tus favoritos y agregalos a Mis compras.</p>
           </div>
           <div class="flex flex-col gap-3 sm:items-end">
             <label for="regionSelect" class="text-xs font-semibold uppercase tracking-wide text-zinc-300" data-i18n="regionLabel">Pais / Moneda</label>
@@ -380,7 +392,7 @@
             <article class="rounded-2xl border border-white/10 bg-black/25 p-5">
               <p class="text-base font-extrabold uppercase tracking-wide text-amber-200" data-i18n="yourPoints">Tus puntos</p>
               <p id="pointsValue" class="mt-2 text-5xl font-extrabold leading-none text-brand-accent">0</p>
-              <p class="mt-4 text-xs font-semibold uppercase tracking-wide text-zinc-400" data-i18n="pointsProgressTitle">Progreso al siguiente premio</p>
+              <p class="mt-4 text-xs font-semibold uppercase tracking-wide text-zinc-200" data-i18n="pointsProgressTitle">Progreso al siguiente premio</p>
               <div class="mt-2 h-2.5 overflow-hidden rounded-full bg-white/15">
                 <div id="pointsProgress" class="h-full w-0 rounded-full bg-gradient-to-r from-emerald-300 to-amber-300 transition-all duration-500"></div>
               </div>
@@ -402,7 +414,7 @@
       <section id="sobre-nosotros" class="mx-auto max-w-7xl min-h-[calc(100svh-7rem)] px-4 py-10 sm:px-6">
         <article class="rounded-3xl border border-amber-300/45 bg-zinc-900/70 p-8 shadow-[0_0_28px_rgba(251,191,36,0.16)] ring-1 ring-amber-200/30">
           <h2 class="font-title text-3xl font-extrabold text-brand-neutral" data-i18n="aboutTitle">Sobre nosotros</h2>
-          <p class="mt-3 max-w-3xl whitespace-pre-line text-amber-50/85" data-i18n="aboutText">
+          <p class="mt-3 max-w-3xl whitespace-pre-line text-amber-50/95" data-i18n="aboutText">
             En Brasaland llevamos desde 2008 perfeccionando el arte de la cocina a la brasa. Nacimos en Medellin como un pequeno restaurante familiar y, con el tiempo, crecimos hasta convertirnos en una cadena con 14 locales en Colombia y Estados Unidos.
 
             Nuestro compromiso es simple, pero poderoso: ofrecer siempre la misma calidad sin importar donde nos visites. Queremos que cada plato tenga el mismo sabor, que cada experiencia sea calida y cercana, y que cada servicio sea agil, respetando tu tiempo.
@@ -416,7 +428,7 @@
         <div class="grid gap-6 lg:grid-cols-2">
           <article class="rounded-3xl border border-amber-300/45 bg-zinc-900/70 p-8 shadow-[0_0_28px_rgba(251,191,36,0.16)] ring-1 ring-amber-200/30">
             <h2 class="font-title text-3xl font-extrabold text-brand-neutral" data-i18n="contactTitle">Contacto</h2>
-            <p class="mt-3 text-amber-50/80" data-i18n="contactText">Hablemos sobre reservas, eventos o alianzas comerciales.</p>
+            <p class="mt-3 text-amber-50/95" data-i18n="contactText">Hablemos sobre reservas, eventos o alianzas comerciales.</p>
             <ul class="mt-6 space-y-3 text-zinc-200">
               <li><strong class="text-white">Direccion:</strong> Av. Brasa 145, Medellin</li>
               <li><strong class="text-white">Telefono:</strong> +57 300 555 0101</li>
@@ -475,7 +487,7 @@
         <div class="text-left md:flex-1 md:text-right">
           <p><a href="mailto:contacto@brasaland.com" class="font-semibold text-brand-secondary hover:text-orange-400">contacto@brasaland.com</a></p>
           <p><a href="tel:+573005550101" class="font-semibold text-brand-secondary hover:text-orange-400">+57 300 555 0101</a></p>
-          <p class="mt-1 text-xs text-zinc-400">© 2026 Brasaland. Todos los derechos reservados.</p>
+          <p class="mt-1 text-xs text-zinc-300">© 2026 Brasaland. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
@@ -503,13 +515,24 @@
       <p id="cartStatus" class="mt-4 hidden rounded-xl border border-emerald-300/40 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200" role="status" aria-live="polite"></p>
     </aside>
 
+    <div id="favoritesPanel" class="fixed inset-0 z-50 hidden bg-black/70 p-4 backdrop-blur-sm" aria-hidden="true">
+      <section class="mx-auto mt-10 flex max-h-[calc(100dvh-5rem)] w-full max-w-6xl flex-col overflow-hidden rounded-3xl border border-white/15 bg-zinc-950/95 p-5 shadow-2xl shadow-black/60 sm:mt-12">
+        <div class="flex items-center justify-between gap-4">
+          <h2 class="font-title text-3xl font-extrabold text-amber-200" data-i18n="favoritesTitle">Mis Favoritos</h2>
+          <button id="closeFavoritesBtn" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-2xl leading-none text-zinc-100 transition hover:border-amber-300 hover:text-amber-200" aria-label="Cerrar favoritos">&times;</button>
+        </div>
+        <p id="favoritesEmpty" class="mt-4 rounded-xl border border-white/10 bg-black/25 p-4 text-sm text-zinc-300" data-i18n="favoritesEmpty">Aun no tienes productos favoritos.</p>
+        <div id="favoritesGrid" class="mt-4 grid gap-5 overflow-y-auto pr-1 sm:grid-cols-2 xl:grid-cols-3"></div>
+      </section>
+    </div>
+
     <div id="paymentPanel" class="fixed inset-0 z-50 hidden bg-black/60 p-4 backdrop-blur-sm" aria-hidden="true">
       <div class="mx-auto mt-24 w-full max-w-md rounded-3xl border border-white/15 bg-zinc-950/95 p-6 shadow-2xl shadow-black/60">
         <h3 class="font-title text-2xl font-extrabold text-amber-200" data-i18n="paymentTitle">Elegir metodo de pago</h3>
         <p class="mt-2 text-sm text-zinc-300" data-i18n="paymentSubtitle">Selecciona como quieres pagar tu pedido.</p>
 
         <div class="mt-4 rounded-2xl border border-white/10 bg-black/25 p-4">
-          <p class="text-xs font-semibold uppercase tracking-wide text-zinc-400" data-i18n="paymentTotal">Total a pagar</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-zinc-200" data-i18n="paymentTotal">Total a pagar</p>
           <p id="paymentTotal" class="mt-1 text-2xl font-extrabold text-amber-300">$0 COP</p>
         </div>
 

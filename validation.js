@@ -8,6 +8,9 @@
       navAbout: "Sobre nosotros",
       navContact: "Contacto",
       register: "Registrarse",
+      myFavorites: "Mis Favoritos",
+      favoritesTitle: "Mis Favoritos",
+      favoritesEmpty: "Aun no tienes productos favoritos.",
       myPurchases: "Mis compras",
       heroTag: "Restaurante especializado en cocina a la brasa",
       heroTitle: "Brasaland: fuego, sabor artesanal y experiencia memorable.",
@@ -151,6 +154,9 @@
       navAbout: "About us",
       navContact: "Contact",
       register: "Sign up",
+      myFavorites: "My Favorites",
+      favoritesTitle: "My Favorites",
+      favoritesEmpty: "You do not have favorite products yet.",
       myPurchases: "My purchases",
       heroTag: "Restaurant specialized in charcoal-grilled cuisine",
       heroTitle: "Brasaland: fire, handcrafted flavor, and a memorable dining experience.",
@@ -554,6 +560,12 @@
     const menuPanelTitleNode = document.getElementById("menuPanelTitle");
     const menuPanelListNode = document.getElementById("menuPanelList");
     const closeMenuPanelBtn = document.getElementById("closeMenuPanelBtn");
+    const favoritesToggle = document.getElementById("favoritesToggle");
+    const favoritesCountNode = document.getElementById("favoritesCount");
+    const favoritesPanelNode = document.getElementById("favoritesPanel");
+    const closeFavoritesBtn = document.getElementById("closeFavoritesBtn");
+    const favoritesGridNode = document.getElementById("favoritesGrid");
+    const favoritesEmptyNode = document.getElementById("favoritesEmpty");
     const featuredDetailPanelNode = document.getElementById("featuredDetailPanel");
     const closeFeaturedDetailBtn = document.getElementById("closeFeaturedDetailBtn");
     const featuredPrevBtn = document.getElementById("featuredPrevBtn");
@@ -575,6 +587,8 @@
     let activeMenuCategory = "all";
     let selectedFeaturedItem = null;
     let selectedFeaturedIndex = -1;
+    const favoritesStorageKey = "favoriteProducts";
+    const favorites = new Set(JSON.parse(localStorage.getItem(favoritesStorageKey) || "[]"));
 
     const categoryMenuData = {
       carnes: {
@@ -663,6 +677,179 @@
         selectedFeaturedItem = null;
         selectedFeaturedIndex = -1;
       }
+    };
+
+    const setFavoritesOpen = (open) => {
+      if (!favoritesPanelNode || !favoritesToggle) {
+        return;
+      }
+      favoritesPanelNode.classList.toggle("hidden", !open);
+      favoritesPanelNode.setAttribute("aria-hidden", open ? "false" : "true");
+      favoritesToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("overflow-hidden", open);
+    };
+
+    const saveFavorites = () => {
+      localStorage.setItem(favoritesStorageKey, JSON.stringify(Array.from(favorites)));
+    };
+
+    const getAllProductCards = () => Array.from(document.querySelectorAll("#menuDestacadosGrid .menu-item-card"));
+
+    const ensureFavoriteStars = () => {
+      getAllProductCards().forEach((card) => {
+        if (!(card instanceof HTMLElement)) {
+          return;
+        }
+
+        card.classList.add("relative");
+        const addBtn = card.querySelector(".add-to-cart");
+        if (!(addBtn instanceof HTMLButtonElement)) {
+          return;
+        }
+
+        const productId = addBtn.dataset.name || "";
+        if (!productId) {
+          return;
+        }
+
+        if (card.querySelector(".favorite-toggle")) {
+          return;
+        }
+
+        const starBtn = document.createElement("button");
+        starBtn.type = "button";
+        starBtn.className = "favorite-toggle absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-200/40 bg-black/50 text-xl leading-none text-amber-200 transition hover:border-amber-300 hover:text-amber-100";
+        starBtn.setAttribute("aria-label", `Marcar favorito: ${productId}`);
+        starBtn.dataset.favoriteName = productId;
+        starBtn.innerHTML = "☆";
+        card.appendChild(starBtn);
+      });
+    };
+
+    const makeFeaturedCardsKeyboardAccessible = () => {
+      getAllProductCards().forEach((card) => {
+        if (!(card instanceof HTMLElement)) {
+          return;
+        }
+
+        const titleNode = card.querySelector('[data-i18n$="Name"]');
+        const cardTitle = titleNode?.textContent?.trim() || "producto";
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `Ver detalle de ${cardTitle}`);
+        card.classList.add("focus-visible:outline-none", "focus-visible:ring-2", "focus-visible:ring-amber-300");
+      });
+    };
+
+    const syncFavoriteButtons = () => {
+      document.querySelectorAll(".favorite-toggle, .panel-favorite-toggle").forEach((btn) => {
+        if (!(btn instanceof HTMLButtonElement)) {
+          return;
+        }
+
+        const id = btn.dataset.favoriteName || "";
+        const isFav = favorites.has(id);
+        btn.textContent = isFav ? "★" : "☆";
+        btn.classList.toggle("bg-amber-300", isFav);
+        btn.classList.toggle("text-zinc-950", isFav);
+        btn.classList.toggle("border-amber-100", isFav);
+        btn.classList.toggle("bg-black/50", !isFav);
+        btn.classList.toggle("text-amber-200", !isFav);
+      });
+
+      if (favoritesCountNode) {
+        favoritesCountNode.textContent = String(favorites.size);
+      }
+    };
+
+    const extractCardProduct = (card) => {
+      if (!(card instanceof HTMLElement)) {
+        return null;
+      }
+
+      const addBtn = card.querySelector(".add-to-cart");
+      const imgNode = card.querySelector("img");
+      const nameNode = card.querySelector('[data-i18n$="Name"]');
+      const descNode = card.querySelector('[data-i18n$="Desc"]');
+
+      if (!(addBtn instanceof HTMLButtonElement) || !(imgNode instanceof HTMLImageElement)) {
+        return null;
+      }
+
+      const id = addBtn.dataset.name || "";
+      const price = Number(addBtn.dataset.price || "0");
+      if (!id || Number.isNaN(price) || price <= 0) {
+        return null;
+      }
+
+      return {
+        id,
+        name: nameNode?.textContent?.trim() || id,
+        description: descNode?.textContent?.trim() || "",
+        price,
+        image: imgNode.src,
+        alt: imgNode.alt || id,
+        category: card.dataset.category || "",
+      };
+    };
+
+    const buildProductsCatalog = () => {
+      const catalog = new Map();
+      getAllProductCards().forEach((card) => {
+        const product = extractCardProduct(card);
+        if (product) {
+          catalog.set(product.id, product);
+        }
+      });
+      return catalog;
+    };
+
+    const renderFavorites = () => {
+      if (!favoritesGridNode || !favoritesEmptyNode) {
+        return;
+      }
+
+      const catalog = buildProductsCatalog();
+      const favoriteProducts = Array.from(favorites)
+        .map((id) => catalog.get(id))
+        .filter(Boolean);
+
+      favoritesGridNode.innerHTML = favoriteProducts
+        .map(
+          (product) =>
+            `<article class="menu-item-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-amber-300/40 hover:bg-zinc-900 hover:shadow-lg hover:shadow-amber-800/20" data-category="${product.category}">` +
+            `<button type="button" class="favorite-toggle absolute right-3 top-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-amber-100 bg-amber-300 text-xl leading-none text-zinc-950 transition hover:border-amber-200" data-favorite-name="${product.id}" aria-label="Marcar favorito: ${product.id}">★</button>` +
+            `<img src="${product.image}" alt="${product.alt}" class="h-44 w-full rounded-2xl border border-white/20 object-cover" loading="lazy" />` +
+            `<div class="mt-4 flex items-start justify-between gap-3">` +
+            `<div class="min-w-0">` +
+            `<p class="mt-1 font-semibold text-white">${product.name}</p>` +
+            `<p class="mt-1 min-h-[2.75rem] text-sm text-zinc-300">${product.description}</p>` +
+            `<p class="mt-3 text-sm font-bold text-amber-300">${formatMoney(product.price)}</p>` +
+            `</div>` +
+            `<button type="button" class="favorite-add-to-cart shrink-0 self-end flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-lg font-black leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="${product.id}" data-price="${product.price}" aria-label="Agregar ${product.name}">+</button>` +
+            `</div></article>`
+        )
+        .join("");
+
+      favoritesEmptyNode.classList.toggle("hidden", favoriteProducts.length > 0);
+      favoritesGridNode.classList.toggle("hidden", favoriteProducts.length === 0);
+      syncFavoriteButtons();
+    };
+
+    const toggleFavorite = (productId) => {
+      if (!productId) {
+        return;
+      }
+
+      if (favorites.has(productId)) {
+        favorites.delete(productId);
+      } else {
+        favorites.add(productId);
+      }
+
+      saveFavorites();
+      syncFavoriteButtons();
+      renderFavorites();
     };
 
     const getFeaturedCards = () => Array.from(document.querySelectorAll("#menuDestacadosGrid .menu-item-card"));
@@ -805,13 +992,17 @@
         .map(
           (item) => {
             const itemName = t(item.nameKey);
+            const isFav = favorites.has(itemName);
             return (
             `<li class="flex items-center justify-between rounded-xl border border-white/10 bg-black/25 px-4 py-3">` +
             `<div class="min-w-0">` +
             `<p class="text-sm text-zinc-100">${itemName}</p>` +
             `<p class="text-sm font-bold text-amber-300">${formatMoney(item.price)}</p>` +
             `</div>` +
+            `<div class="flex items-center gap-2">` +
+            `<button type="button" class="panel-favorite-toggle inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-amber-200/40 ${isFav ? "bg-amber-300 text-zinc-950 border-amber-100" : "bg-black/50 text-amber-200"} text-xl leading-none transition hover:border-amber-300 hover:text-amber-100" data-favorite-name="${itemName}" aria-label="Marcar favorito: ${itemName}">${isFav ? "★" : "☆"}</button>` +
             `<button type="button" class="panel-add-to-cart inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-2xl font-extrabold leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="${itemName}" data-price="${item.price}" aria-label="Agregar ${itemName}">+</button>` +
+            `</div>` +
             `</li>`
             );
           }
@@ -976,10 +1167,59 @@
       });
     });
 
+    ensureFavoriteStars();
+    makeFeaturedCardsKeyboardAccessible();
+    syncFavoriteButtons();
+    renderFavorites();
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) {
+        return;
+      }
+
+      const favoriteBtn = target.closest(".favorite-toggle");
+      if (favoriteBtn instanceof HTMLButtonElement) {
+        event.preventDefault();
+        event.stopPropagation();
+        toggleFavorite(favoriteBtn.dataset.favoriteName || "");
+        return;
+      }
+
+      const favAddBtn = target.closest(".favorite-add-to-cart");
+      if (favAddBtn instanceof HTMLButtonElement) {
+        const name = favAddBtn.dataset.name;
+        const price = Number(favAddBtn.dataset.price || "0");
+        if (!name || Number.isNaN(price) || price <= 0) {
+          return;
+        }
+        addItemToCart(name, price, true);
+      }
+    });
+
     if (cartToggle) {
       cartToggle.addEventListener("click", () => {
         const expanded = cartToggle.getAttribute("aria-expanded") === "true";
         setCartOpen(!expanded);
+      });
+    }
+
+    if (favoritesToggle) {
+      favoritesToggle.addEventListener("click", () => {
+        const expanded = favoritesToggle.getAttribute("aria-expanded") === "true";
+        setFavoritesOpen(!expanded);
+      });
+    }
+
+    if (closeFavoritesBtn) {
+      closeFavoritesBtn.addEventListener("click", () => setFavoritesOpen(false));
+    }
+
+    if (favoritesPanelNode) {
+      favoritesPanelNode.addEventListener("click", (event) => {
+        if (event.target === favoritesPanelNode) {
+          setFavoritesOpen(false);
+        }
       });
     }
 
@@ -1094,8 +1334,33 @@
           return;
         }
 
+        if (target.closest(".favorite-toggle")) {
+          return;
+        }
+
         const card = target.closest(".menu-item-card");
         if (card instanceof HTMLElement) {
+          openFeaturedDetailFromCard(card);
+        }
+      });
+
+      featuredMenuGrid.addEventListener("keydown", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) {
+          return;
+        }
+
+        if (target.matches("button, a, input, select, textarea")) {
+          return;
+        }
+
+        const card = target.closest(".menu-item-card");
+        if (!(card instanceof HTMLElement)) {
+          return;
+        }
+
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
           openFeaturedDetailFromCard(card);
         }
       });
@@ -1150,6 +1415,12 @@
           return;
         }
 
+        const favoriteButton = target.closest(".panel-favorite-toggle");
+        if (favoriteButton instanceof HTMLButtonElement) {
+          toggleFavorite(favoriteButton.dataset.favoriteName || "");
+          return;
+        }
+
         const button = target.closest(".panel-add-to-cart");
         if (!(button instanceof HTMLButtonElement)) {
           return;
@@ -1181,6 +1452,7 @@
 
       if (event.key === "Escape") {
         setFeaturedDetailOpen(false);
+        setFavoritesOpen(false);
       }
 
       if (!featuredDetailPanelNode || featuredDetailPanelNode.classList.contains("hidden")) {
@@ -1208,6 +1480,10 @@
       if (featuredDetailPanelNode && !featuredDetailPanelNode.classList.contains("hidden") && selectedFeaturedIndex >= 0) {
         renderFeaturedDetailByIndex(selectedFeaturedIndex, { animate: false });
       }
+      ensureFavoriteStars();
+      makeFeaturedCardsKeyboardAccessible();
+      syncFavoriteButtons();
+      renderFavorites();
       updateWeeklyPromo();
       updateLoyaltyProgress();
     });
