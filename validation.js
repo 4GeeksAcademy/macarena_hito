@@ -99,7 +99,7 @@
       rewardBurger: "Canjear burger clásica (280 pts)",
       pointsEmpty: "Aún no tienes puntos acumulados.",
       contactTitle: "Contacto",
-      contactText: "Hablemos sobre reservas, eventos o alianzas comerciales.",
+      contactText: "Por consultas comunicate con nosotros",
       aboutTitle: "Sobre nosotros",
       aboutText:
         "En Brasaland llevamos desde 2008 perfeccionando el arte de la cocina a la brasa. Nacimos en Medellín como un pequeño restaurante familiar y, con el tiempo, crecimos hasta convertirnos en una cadena con 14 locales en Colombia y Estados Unidos.\n\nNuestro compromiso es simple, pero poderoso: ofrecer siempre la misma calidad sin importar dónde nos visites. Queremos que cada plato tenga el mismo sabor, que cada experiencia sea cálida y cercana, y que cada servicio sea ágil, respetando tu tiempo.\n\nHoy, más de 100 personas forman parte de Brasaland, trabajando día a día para mantener viva esa esencia que nos hizo crecer. Seguimos evolucionando para mejorar cada detalle, sin perder lo más importante: la pasión por hacer las cosas bien.",
