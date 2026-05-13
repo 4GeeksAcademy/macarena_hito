@@ -98,7 +98,7 @@
       contactText: "Hablemos sobre reservas, eventos o alianzas comerciales.",
       aboutTitle: "Sobre nosotros",
       aboutText:
-        "Somos una empresa de restaurant a la brasa, ubicados en Colombia y Estados Unidos..",
+        "En Brasaland llevamos desde 2008 perfeccionando el arte de la cocina a la brasa. Nacimos en Medellin como un pequeno restaurante familiar y, con el tiempo, crecimos hasta convertirnos en una cadena con 14 locales en Colombia y Estados Unidos.\n\nNuestro compromiso es simple, pero poderoso: ofrecer siempre la misma calidad sin importar donde nos visites. Queremos que cada plato tenga el mismo sabor, que cada experiencia sea calida y cercana, y que cada servicio sea agil, respetando tu tiempo.\n\nHoy, mas de 100 personas forman parte de Brasaland, trabajando dia a dia para mantener viva esa esencia que nos hizo crecer. Seguimos evolucionando para mejorar cada detalle, sin perder lo mas importante: la pasion por hacer las cosas bien.",
       footerSubtitle: "Cocina a la brasa · Colombia y Florida",
       backHome: "Volver al inicio",
       registerTitle: "Registro de usuario",
@@ -549,10 +549,22 @@
     const regionSelect = document.getElementById("regionSelect");
     const menuPriceNodes = document.querySelectorAll(".menu-price");
     const filterButtons = document.querySelectorAll(".menu-filter");
+    const featuredMenuGrid = document.getElementById("menuDestacadosGrid");
     const menuPanelNode = document.getElementById("menuCategoryPanel");
     const menuPanelTitleNode = document.getElementById("menuPanelTitle");
     const menuPanelListNode = document.getElementById("menuPanelList");
     const closeMenuPanelBtn = document.getElementById("closeMenuPanelBtn");
+    const featuredDetailPanelNode = document.getElementById("featuredDetailPanel");
+    const closeFeaturedDetailBtn = document.getElementById("closeFeaturedDetailBtn");
+    const featuredPrevBtn = document.getElementById("featuredPrevBtn");
+    const featuredNextBtn = document.getElementById("featuredNextBtn");
+    const featuredDetailPositionNode = document.getElementById("featuredDetailPosition");
+    const featuredDetailImageNode = document.getElementById("featuredDetailImage");
+    const featuredDetailContentNode = document.getElementById("featuredDetailContent");
+    const featuredDetailNameNode = document.getElementById("featuredDetailName");
+    const featuredDetailDescriptionNode = document.getElementById("featuredDetailDescription");
+    const featuredDetailPriceNode = document.getElementById("featuredDetailPrice");
+    const featuredDetailAddBtn = document.getElementById("featuredDetailAddBtn");
 
     let cart = [];
     let points = 0;
@@ -561,6 +573,8 @@
     const usdRate = 4000;
     let activeRegion = "co";
     let activeMenuCategory = "all";
+    let selectedFeaturedItem = null;
+    let selectedFeaturedIndex = -1;
 
     const categoryMenuData = {
       carnes: {
@@ -637,6 +651,149 @@
       document.body.classList.toggle("overflow-hidden", open);
     };
 
+    const setFeaturedDetailOpen = (open) => {
+      if (!featuredDetailPanelNode) {
+        return;
+      }
+      featuredDetailPanelNode.classList.toggle("hidden", !open);
+      featuredDetailPanelNode.setAttribute("aria-hidden", open ? "false" : "true");
+      document.body.classList.toggle("overflow-hidden", open);
+
+      if (!open) {
+        selectedFeaturedItem = null;
+        selectedFeaturedIndex = -1;
+      }
+    };
+
+    const getFeaturedCards = () => Array.from(document.querySelectorAll("#menuDestacadosGrid .menu-item-card"));
+
+    const animateFeaturedDetailChange = (direction = 0) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      const distance = direction === 0 ? 0 : direction > 0 ? 20 : -20;
+
+      if (featuredDetailImageNode instanceof HTMLImageElement) {
+        featuredDetailImageNode.animate(
+          [
+            { opacity: 0.2, transform: `translateX(${distance}px) scale(0.98)` },
+            { opacity: 1, transform: "translateX(0) scale(1)" },
+          ],
+          { duration: 240, easing: "ease-out" }
+        );
+      }
+
+      if (featuredDetailContentNode instanceof HTMLElement) {
+        featuredDetailContentNode.animate(
+          [
+            { opacity: 0.1, transform: `translateX(${distance * -1}px)` },
+            { opacity: 1, transform: "translateX(0)" },
+          ],
+          { duration: 240, easing: "ease-out" }
+        );
+      }
+    };
+
+    const renderFeaturedDetailByIndex = (index, options = {}) => {
+      const { animate = false, direction = 0 } = options;
+      const cards = getFeaturedCards();
+      if (cards.length === 0) {
+        return;
+      }
+
+      const normalizedIndex = ((index % cards.length) + cards.length) % cards.length;
+      const card = cards[normalizedIndex];
+      if (!(card instanceof HTMLElement)) {
+        return;
+      }
+
+      const imageNode = card.querySelector("img");
+      const titleNode = card.querySelector('[data-i18n$="Name"]');
+      const descriptionNode = card.querySelector('[data-i18n$="Desc"]');
+      const addButtonNode = card.querySelector(".add-to-cart");
+
+      if (!(imageNode instanceof HTMLImageElement) || !(addButtonNode instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      const name = addButtonNode.dataset.name || titleNode?.textContent?.trim() || "";
+      const price = Number(addButtonNode.dataset.price || "0");
+      const description = descriptionNode?.textContent?.trim() || "";
+
+      if (!name || Number.isNaN(price) || price <= 0) {
+        return;
+      }
+
+      selectedFeaturedIndex = normalizedIndex;
+      selectedFeaturedItem = {
+        name,
+        price,
+        description,
+        imageSrc: imageNode.src,
+        imageAlt: imageNode.alt || name,
+      };
+
+      if (featuredDetailImageNode instanceof HTMLImageElement) {
+        featuredDetailImageNode.src = selectedFeaturedItem.imageSrc;
+        featuredDetailImageNode.alt = selectedFeaturedItem.imageAlt;
+      }
+      if (featuredDetailNameNode) {
+        featuredDetailNameNode.textContent = selectedFeaturedItem.name;
+      }
+      if (featuredDetailDescriptionNode) {
+        featuredDetailDescriptionNode.textContent = selectedFeaturedItem.description;
+        featuredDetailDescriptionNode.scrollTop = 0;
+      }
+      if (featuredDetailPriceNode) {
+        featuredDetailPriceNode.textContent = formatMoney(selectedFeaturedItem.price);
+      }
+      if (featuredDetailPositionNode) {
+        featuredDetailPositionNode.textContent = `${normalizedIndex + 1} / ${cards.length}`;
+      }
+
+      if (animate) {
+        animateFeaturedDetailChange(direction);
+      }
+    };
+
+    const stepFeaturedDetail = (step) => {
+      if (selectedFeaturedIndex < 0) {
+        return;
+      }
+      renderFeaturedDetailByIndex(selectedFeaturedIndex + step, { animate: true, direction: step });
+    };
+
+    const addItemToCart = (name, price, showStatusMessage = false) => {
+      const existing = cart.find((item) => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+
+      renderCart();
+      setCartOpen(true);
+      if (showStatusMessage) {
+        showCartStatus(`Agregado al carrito: ${name}`);
+      }
+    };
+
+    const openFeaturedDetailFromCard = (card) => {
+      if (!(card instanceof HTMLElement)) {
+        return;
+      }
+
+      const cards = getFeaturedCards();
+      const cardIndex = cards.indexOf(card);
+      if (cardIndex < 0) {
+        return;
+      }
+
+      renderFeaturedDetailByIndex(cardIndex, { animate: true, direction: 0 });
+      setFeaturedDetailOpen(true);
+    };
+
     const renderCategoryPanel = (category) => {
       const categoryData = categoryMenuData[category];
       if (!categoryData || !menuPanelTitleNode || !menuPanelListNode) {
@@ -654,7 +811,7 @@
             `<p class="text-sm text-zinc-100">${itemName}</p>` +
             `<p class="text-sm font-bold text-amber-300">${formatMoney(item.price)}</p>` +
             `</div>` +
-            `<button type="button" class="panel-add-to-cart shrink-0 rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary px-3 py-1.5 text-xs font-extrabold text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="${itemName}" data-price="${item.price}" aria-label="Agregar ${itemName}">+</button>` +
+            `<button type="button" class="panel-add-to-cart inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-amber-300 to-brand-secondary text-2xl font-extrabold leading-none text-zinc-950 shadow-md shadow-amber-700/30 transition hover:from-amber-200 hover:to-orange-400" data-name="${itemName}" data-price="${item.price}" aria-label="Agregar ${itemName}">+</button>` +
             `</li>`
             );
           }
@@ -811,15 +968,11 @@
         const name = btn.dataset.name;
         const price = Number(btn.dataset.price);
 
-        const existing = cart.find((item) => item.name === name);
-        if (existing) {
-          existing.qty += 1;
-        } else {
-          cart.push({ name, price, qty: 1 });
+        if (!name || Number.isNaN(price) || price <= 0) {
+          return;
         }
 
-        renderCart();
-        setCartOpen(true);
+        addItemToCart(name, price, false);
       });
     });
 
@@ -930,6 +1083,54 @@
       });
     });
 
+    if (featuredMenuGrid) {
+      featuredMenuGrid.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) {
+          return;
+        }
+
+        if (target.closest(".add-to-cart")) {
+          return;
+        }
+
+        const card = target.closest(".menu-item-card");
+        if (card instanceof HTMLElement) {
+          openFeaturedDetailFromCard(card);
+        }
+      });
+    }
+
+    if (closeFeaturedDetailBtn) {
+      closeFeaturedDetailBtn.addEventListener("click", () => setFeaturedDetailOpen(false));
+    }
+
+    if (featuredPrevBtn) {
+      featuredPrevBtn.addEventListener("click", () => stepFeaturedDetail(-1));
+    }
+
+    if (featuredNextBtn) {
+      featuredNextBtn.addEventListener("click", () => stepFeaturedDetail(1));
+    }
+
+    if (featuredDetailPanelNode) {
+      featuredDetailPanelNode.addEventListener("click", (event) => {
+        if (event.target === featuredDetailPanelNode) {
+          setFeaturedDetailOpen(false);
+        }
+      });
+    }
+
+    if (featuredDetailAddBtn) {
+      featuredDetailAddBtn.addEventListener("click", () => {
+        if (!selectedFeaturedItem) {
+          return;
+        }
+
+        addItemToCart(selectedFeaturedItem.name, selectedFeaturedItem.price, true);
+      });
+    }
+
     if (closeMenuPanelBtn) {
       closeMenuPanelBtn.addEventListener("click", closeCategoryPanel);
     }
@@ -977,6 +1178,22 @@
       if (event.key === "Escape" && activeMenuCategory !== "all") {
         closeCategoryPanel();
       }
+
+      if (event.key === "Escape") {
+        setFeaturedDetailOpen(false);
+      }
+
+      if (!featuredDetailPanelNode || featuredDetailPanelNode.classList.contains("hidden")) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        stepFeaturedDetail(-1);
+      }
+
+      if (event.key === "ArrowRight") {
+        stepFeaturedDetail(1);
+      }
     });
 
     window.addEventListener("site-language-changed", () => {
@@ -987,6 +1204,9 @@
       }
       if (pointsStatusNode && points === 0) {
         pointsStatusNode.textContent = t("pointsEmpty");
+      }
+      if (featuredDetailPanelNode && !featuredDetailPanelNode.classList.contains("hidden") && selectedFeaturedIndex >= 0) {
+        renderFeaturedDetailByIndex(selectedFeaturedIndex, { animate: false });
       }
       updateWeeklyPromo();
       updateLoyaltyProgress();
