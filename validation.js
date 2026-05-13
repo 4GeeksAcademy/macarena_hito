@@ -2,72 +2,73 @@
   const i18n = {
     es: {
       skipLink: "Saltar al contenido principal",
-      navMenu: "Menu",
+      navMenu: "Menú",
       navOrders: "Pedidos",
       navPoints: "Brasaland points",
       navAbout: "Sobre nosotros",
       navContact: "Contacto",
+      login: "Iniciar sesión",
       register: "Registrarse",
       myFavorites: "Mis Favoritos",
       favoritesTitle: "Mis Favoritos",
-      favoritesEmpty: "Aun no tienes productos favoritos.",
+      favoritesEmpty: "Aún no tienes productos favoritos.",
       myPurchases: "Mis compras",
       heroTag: "Restaurante especializado en cocina a la brasa",
       heroTitle: "Brasaland: fuego, sabor artesanal y experiencia memorable.",
       heroText:
-        "Disfruta carnes a la brasa, hamburguesas artesanales y acompanamientos preparados al momento. Ahora puedes armar Mis compras, guardar favoritos y sumar puntos con Brasaland points.",
-      viewMenu: "Ver menu",
+        "Disfruta carnes a la brasa, hamburguesas artesanales y acompañamientos preparados al momento. Ahora puedes armar Mis compras, guardar favoritos y sumar puntos con Brasaland points.",
+      viewMenu: "Ver menú",
       makeOrder: "Hacer pedido",
-      menuTitle: "Menu Brasaland",
-      menuSubtitle: "Selecciona tus favoritos y agregalos a Mis compras.",
-      menuFilterTop: "Los mas pedidos",
+      menuTitle: "Menú Brasaland",
+      menuSubtitle: "Selecciona tus favoritos y agrégalos a Mis compras.",
+      menuFilterTop: "Los más pedidos",
       menuFilterMeats: "Carnes",
       menuFilterBurgers: "Hamburguesas",
-      menuFilterSidesDrinks: "Acompanamientos y bebidas",
+      menuFilterSidesDrinks: "Acompañamientos y bebidas",
       menuFilterCombos: "Combos",
       menuTagMeats: "Carnes",
       menuTagBurgers: "Hamburguesas",
-      menuTagSides: "Acompanamientos",
+      menuTagSides: "Acompañamientos",
       menuTagCombos: "Combos",
       itemPuntaName: "Punta de anca 300g",
       itemPuntaDesc: "Corte premium con mantequilla de ajo y chimichurri.",
       itemRibsName: "Costilla BBQ brasaland",
-      itemRibsDesc: "Coccion lenta, salsa de la casa y toque ahumado.",
+      itemRibsDesc: "Cocción lenta, salsa de la casa y toque ahumado.",
       itemBrasaBurgerName: "Brasa Burger Doble",
       itemBrasaBurgerDesc: "Doble carne, queso cheddar, cebolla crispy y salsa brasa.",
       itemChickenBurgerName: "Chicken Grill Burger",
       itemChickenBurgerDesc: "Pechuga marinada, queso suizo y mayonesa de cilantro.",
-      itemFriesName: "Papas rusticas brasa",
-      itemFriesDesc: "Papas en casco con pimenton ahumado y dip casero.",
+      itemFriesName: "Papas rústicas brasa",
+      itemFriesDesc: "Papas en casco con pimentón ahumado y dip casero.",
       itemLemonadeName: "Limonada de panela",
       itemLemonadeDesc: "Refrescante, natural y preparada al instante.",
-      itemComboParrilleroName: "Combo Parrillero Clasico",
-      itemComboParrilleroDesc: "Carne a la brasa, papas rusticas y bebida.",
+      itemComboParrilleroName: "Combo Parrillero Clásico",
+      itemComboParrilleroDesc: "Carne a la brasa, papas rústicas y bebida.",
       itemComboBurgerName: "Combo Burger Doble",
       itemComboBurgerDesc: "Brasa Burger Doble, papas y gaseosa.",
       itemComboFamilyName: "Combo Familiar Brasa",
-      itemComboFamilyDesc: "Mix de carnes, 2 acompanamientos y 2 bebidas.",
+      itemComboFamilyDesc: "Mix de carnes, 2 acompañamientos y 2 bebidas.",
       panelTitleMeats: "Carta de carnes",
       panelTitleBurgers: "Carta de hamburguesas",
-      panelTitleSides: "Carta de acompanamientos y bebidas",
+      panelTitleSides: "Carta de acompañamientos y bebidas",
       panelTitleCombos: "Carta de combos",
       itemChurrascoName: "Churrasco a la brasa 250g",
-      itemClassicBurgerName: "Burger Clasica Brasa",
+      itemClassicBurgerName: "Burger Clásica Brasa",
       itemSodaColaName: "Refresco cola 400ml",
-      itemSodaLemonName: "Refresco limon 400ml",
+      itemSodaLemonName: "Refresco limón 400ml",
       itemBeerLagerName: "Cerveza lager nacional",
       itemBeerIpaName: "Cerveza artesanal IPA",
-      regionLabel: "Pais / Moneda",
+      regionLabel: "País / Moneda",
       regionCo: "Colombia (COP)",
       regionUs: "Estados Unidos - Florida (USD)",
       ordersTitle: "Pedidos online (simulado)",
       ordersText:
-        "Agrega productos desde el menu, revisa Mis compras y simula tu compra. No se conecta con backend: es una experiencia frontend para validar el flujo.",
+        "Agrega productos desde el menú, revisa Mis compras y simula tu compra. No se conecta con backend: es una experiencia frontend para validar el flujo.",
       checkout: "Finalizar compra",
-      paymentTitle: "Elegir metodo de pago",
-      paymentSubtitle: "Selecciona como quieres pagar tu pedido.",
+      paymentTitle: "Elegir método de pago",
+      paymentSubtitle: "Selecciona cómo quieres pagar tu pedido.",
       paymentTotal: "Total a pagar",
-      paymentMethodCard: "Tarjeta debito/credito",
+      paymentMethodCard: "Tarjeta débito/crédito",
       paymentMethodWallet: "Billetera digital",
       paymentMethodCash: "Pago en caja",
       paymentCancel: "Cancelar",
@@ -80,31 +81,35 @@
       pointsCta: "Quiero mi cuenta Brasa Points",
       pointsBenefitOneTitle: "Compra y suma",
       pointsBenefitOneText: "Acumula 1 punto por cada 1.000 COP en pedidos simulados.",
-      pointsBenefitTwoTitle: "Canjea rapido",
+      pointsBenefitTwoTitle: "Canjea rápido",
       pointsBenefitTwoText: "Desde 80 puntos desbloqueas premios inmediatos en tu mesa.",
       pointsBenefitThreeTitle: "Sube de nivel",
-      pointsBenefitThreeText: "Mientras mas compras, mejores recompensas consigues.",
+      pointsBenefitThreeText: "Mientras más compras, mejores recompensas consigues.",
       pointsWeeklyPromoTitle: "Martes Brasa x2",
       pointsWeeklyPromoInactive: "Activa cada martes: puntos dobles en cada compra.",
-      pointsWeeklyPromoActive: "Hoy esta activo Martes Brasa: tus compras suman puntos dobles.",
-      pointsPromo: "Registrate y participa",
+      pointsWeeklyPromoActive: "Hoy está activo Martes Brasa: tus compras suman puntos dobles.",
+      pointsPromo: "Regístrate y participa",
       yourPoints: "Tus puntos",
       pointsProgressTitle: "Progreso al siguiente premio",
-      pointsNextReward: "Te faltan {n} pts para tu proximo premio.",
+      pointsNextReward: "Te faltan {n} pts para tu próximo premio.",
       pointsAllRewards: "Ya puedes canjear cualquier recompensa disponible.",
       rewardsAvailable: "Recompensas disponibles",
       rewardDrink: "Canjear bebida gratis (80 pts)",
-      rewardSide: "Canjear acompanamiento (150 pts)",
-      rewardBurger: "Canjear burger clasica (280 pts)",
-      pointsEmpty: "Aun no tienes puntos acumulados.",
+      rewardSide: "Canjear acompañamiento (150 pts)",
+      rewardBurger: "Canjear burger clásica (280 pts)",
+      pointsEmpty: "Aún no tienes puntos acumulados.",
       contactTitle: "Contacto",
       contactText: "Hablemos sobre reservas, eventos o alianzas comerciales.",
       aboutTitle: "Sobre nosotros",
       aboutText:
-        "En Brasaland llevamos desde 2008 perfeccionando el arte de la cocina a la brasa. Nacimos en Medellin como un pequeno restaurante familiar y, con el tiempo, crecimos hasta convertirnos en una cadena con 14 locales en Colombia y Estados Unidos.\n\nNuestro compromiso es simple, pero poderoso: ofrecer siempre la misma calidad sin importar donde nos visites. Queremos que cada plato tenga el mismo sabor, que cada experiencia sea calida y cercana, y que cada servicio sea agil, respetando tu tiempo.\n\nHoy, mas de 100 personas forman parte de Brasaland, trabajando dia a dia para mantener viva esa esencia que nos hizo crecer. Seguimos evolucionando para mejorar cada detalle, sin perder lo mas importante: la pasion por hacer las cosas bien.",
+        "En Brasaland llevamos desde 2008 perfeccionando el arte de la cocina a la brasa. Nacimos en Medellín como un pequeño restaurante familiar y, con el tiempo, crecimos hasta convertirnos en una cadena con 14 locales en Colombia y Estados Unidos.\n\nNuestro compromiso es simple, pero poderoso: ofrecer siempre la misma calidad sin importar dónde nos visites. Queremos que cada plato tenga el mismo sabor, que cada experiencia sea cálida y cercana, y que cada servicio sea ágil, respetando tu tiempo.\n\nHoy, más de 100 personas forman parte de Brasaland, trabajando día a día para mantener viva esa esencia que nos hizo crecer. Seguimos evolucionando para mejorar cada detalle, sin perder lo más importante: la pasión por hacer las cosas bien.",
       footerSubtitle: "Cocina a la brasa · Colombia y Florida",
       backHome: "Volver al inicio",
       registerTitle: "Registro de usuario",
+      loginTitle: "Iniciar sesión",
+      loginSubtitle: "Ingresa con tu email y contraseña para continuar.",
+      loginPassword: "Contraseña *",
+      loginState: "Sesión iniciada: {name}",
       registerSubtitle:
         "Crea tu perfil para gestionar tus compras y acumular puntos en Brasaland points.",
       registerHint: "Los campos con * son obligatorios.",
@@ -115,36 +120,37 @@
       lastNamePh: "Ej: Rojas",
       emailLabel: "Email *",
       emailPh: "Ej: camila@email.com",
-      phoneText: "Telefono *",
+      phoneText: "Teléfono *",
       phonePh: "Ej: +57 300 123 4567",
       preferences: "Preferencias",
-      country: "Pais *",
-      selectOption: "Selecciona una opcion",
+      country: "País *",
+      selectOption: "Selecciona una opción",
       countryCo: "Colombia",
       countryUs: "Estados Unidos (Florida)",
-      favoriteCategory: "Categoria favorita *",
+      favoriteCategory: "Categoría favorita *",
       catMeat: "Carnes a la brasa",
       catBurgers: "Hamburguesas artesanales",
-      catSides: "Acompanamientos",
+      catSides: "Acompañamientos",
       catDrinks: "Bebidas",
-      consent: "Acepto terminos, privacidad y comunicacion de beneficios Brasaland. *",
+      consent: "Acepto términos, privacidad y comunicación de beneficios Brasaland. *",
       createAccount: "Crear cuenta",
       clearForm: "Limpiar formulario",
       footerRegister: "Registro de usuarios y beneficios Brasaland points",
       required: "Este campo es obligatorio.",
-      invalidEmail: "Ingresa un email valido.",
-      invalidPhone: "Ingresa un telefono valido.",
+      invalidEmail: "Ingresa un email válido.",
+      invalidPhone: "Ingresa un teléfono válido.",
       fixErrors: "Corrige los errores antes de continuar.",
       registerSuccess: "Registro completado. Bienvenido a Brasaland.",
+      loginSuccess: "Sesión iniciada correctamente.",
       contactSuccess: "Mensaje enviado correctamente. Te responderemos pronto.",
-      purchasesEmpty: "Tu lista de Mis compras esta vacia.",
-      purchasesCleared: "Mis compras se vacio correctamente.",
+      purchasesEmpty: "Tu lista de Mis compras está vacía.",
+      purchasesCleared: "Mis compras se vació correctamente.",
       addBeforeCheckout: "Agrega productos a Mis compras antes de finalizar compra.",
       orderSent: "Pedido simulado enviado correctamente.",
       purchaseCompleted: "Compra simulada completada. Ganaste {n} puntos.",
       purchaseCompletedPromo: "Compra simulada completada. Ganaste {n} puntos con promo x2.",
       notEnoughPoints: "No tienes puntos suficientes para este canje ({n} pts).",
-      redeemed: "Canje realizado con exito. Usaste {n} puntos.",
+      redeemed: "Canje realizado con éxito. Usaste {n} puntos.",
     },
     en: {
       skipLink: "Skip to main content",
@@ -153,6 +159,7 @@
       navPoints: "Brasaland points",
       navAbout: "About us",
       navContact: "Contact",
+      login: "Log in",
       register: "Sign up",
       myFavorites: "My Favorites",
       favoritesTitle: "My Favorites",
@@ -251,6 +258,10 @@
       footerSubtitle: "Charcoal-grilled cuisine · Colombia and Florida",
       backHome: "Back to home",
       registerTitle: "User registration",
+      loginTitle: "Log in",
+      loginSubtitle: "Sign in with your email and password to continue.",
+      loginPassword: "Password *",
+      loginState: "Signed in: {name}",
       registerSubtitle:
         "Create your profile to manage your purchases and collect points in Brasaland points.",
       registerHint: "Fields marked with * are required.",
@@ -282,6 +293,7 @@
       invalidPhone: "Enter a valid phone number.",
       fixErrors: "Fix validation errors before continuing.",
       registerSuccess: "Registration completed. Welcome to Brasaland.",
+      loginSuccess: "Signed in successfully.",
       contactSuccess: "Message sent successfully. We will get back to you soon.",
       purchasesEmpty: "Your My purchases list is empty.",
       purchasesCleared: "My purchases cleared successfully.",
@@ -410,7 +422,7 @@
     if (rule.startsWith("max:")) {
       const max = Number(rule.split(":")[1]);
       if (!Number.isNaN(max) && value.length > max) {
-        return `Debe tener como maximo ${max} caracteres.`;
+        return `Debe tener como máximo ${max} caracteres.`;
       }
     }
 
@@ -418,7 +430,7 @@
       const min = Number(rule.split(":")[1]);
       const current = Number(value);
       if (!isNumberValid(value) || (!Number.isNaN(min) && current < min)) {
-        return `Ingresa un numero mayor o igual a ${min}.`;
+        return `Ingresa un número mayor o igual a ${min}.`;
       }
     }
 
@@ -426,7 +438,7 @@
       const max = Number(rule.split(":")[1]);
       const current = Number(value);
       if (!isNumberValid(value) || (!Number.isNaN(max) && current > max)) {
-        return `Ingresa un numero menor o igual a ${max}.`;
+        return `Ingresa un número menor o igual a ${max}.`;
       }
     }
 
@@ -435,14 +447,14 @@
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       if (Number.isNaN(selectedDate.getTime()) || selectedDate < today) {
-        return "Selecciona una fecha valida desde hoy en adelante.";
+        return "Selecciona una fecha válida desde hoy en adelante.";
       }
     }
 
     return "";
   };
 
-  const wireFormValidation = (formId, statusId, successMessageKey) => {
+  const wireFormValidation = (formId, statusId, successMessageKey, onSuccess) => {
     const form = document.getElementById(formId);
     if (!form) {
       return;
@@ -521,6 +533,11 @@
       }
 
       showStatus(t(successMessageKey));
+
+      if (typeof onSuccess === "function") {
+        onSuccess(form);
+      }
+
       form.reset();
       fields.forEach((field) => clearError(form, field));
     });
@@ -538,6 +555,7 @@
     const cartItemsNode = document.getElementById("cartItems");
     const cartTotalNode = document.getElementById("cartTotal");
     const cartCountNode = document.getElementById("cartCount");
+    const mobileCartCountNode = document.getElementById("mobileCartCount");
     const checkoutBtn = document.getElementById("checkoutBtn");
     const clearCartBtn = document.getElementById("clearCartBtn");
     const cartStatusNode = document.getElementById("cartStatus");
@@ -562,6 +580,7 @@
     const closeMenuPanelBtn = document.getElementById("closeMenuPanelBtn");
     const favoritesToggle = document.getElementById("favoritesToggle");
     const favoritesCountNode = document.getElementById("favoritesCount");
+    const mobileFavoritesCountNode = document.getElementById("mobileFavoritesCount");
     const favoritesPanelNode = document.getElementById("favoritesPanel");
     const closeFavoritesBtn = document.getElementById("closeFavoritesBtn");
     const favoritesGridNode = document.getElementById("favoritesGrid");
@@ -759,6 +778,10 @@
 
       if (favoritesCountNode) {
         favoritesCountNode.textContent = String(favorites.size);
+      }
+
+      if (mobileFavoritesCountNode) {
+        mobileFavoritesCountNode.textContent = String(favorites.size);
       }
     };
 
@@ -1101,6 +1124,10 @@
 
       if (cartCountNode) {
         cartCountNode.textContent = String(count);
+      }
+
+      if (mobileCartCountNode) {
+        mobileCartCountNode.textContent = String(count);
       }
 
       if (cartTotalNode) {
@@ -1542,9 +1569,172 @@
     }
   };
 
+  const setupLoginModal = () => {
+    const loginOpenBtn = document.getElementById("loginOpenBtn");
+    const loginStateBadge = document.getElementById("loginStateBadge");
+    const loginPanelNode = document.getElementById("loginPanel");
+    const closeLoginBtn = document.getElementById("closeLoginBtn");
+    const cancelLoginBtn = document.getElementById("cancelLoginBtn");
+    const loginStorageKey = "brasalandLoggedInUser";
+
+    if (!loginOpenBtn || !loginPanelNode || !loginStateBadge) {
+      return;
+    }
+
+    const getDisplayNameFromEmail = (email) => {
+      const raw = String(email || "").split("@")[0] || "Usuario";
+      const base = raw.replace(/[._-]+/g, " ").trim();
+      if (!base) {
+        return "Usuario";
+      }
+      return base
+        .split(" ")
+        .filter(Boolean)
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+        .join(" ");
+    };
+
+    const applyLoginState = (email) => {
+      const hasSession = typeof email === "string" && email.trim() !== "";
+      loginOpenBtn.classList.toggle("hidden", hasSession);
+      loginOpenBtn.setAttribute("aria-hidden", hasSession ? "true" : "false");
+      loginStateBadge.classList.toggle("hidden", !hasSession);
+
+      if (hasSession) {
+        const displayName = getDisplayNameFromEmail(email);
+        loginStateBadge.textContent = t("loginState", { name: displayName });
+      } else {
+        loginStateBadge.textContent = "";
+      }
+    };
+
+    const setLoginOpen = (open) => {
+      loginPanelNode.classList.toggle("hidden", !open);
+      loginPanelNode.setAttribute("aria-hidden", open ? "false" : "true");
+      loginOpenBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("overflow-hidden", open);
+    };
+
+    loginOpenBtn.addEventListener("click", () => setLoginOpen(true));
+
+    if (closeLoginBtn) {
+      closeLoginBtn.addEventListener("click", () => setLoginOpen(false));
+    }
+
+    if (cancelLoginBtn) {
+      cancelLoginBtn.addEventListener("click", () => setLoginOpen(false));
+    }
+
+    loginPanelNode.addEventListener("click", (event) => {
+      if (event.target === loginPanelNode) {
+        setLoginOpen(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !loginPanelNode.classList.contains("hidden")) {
+        setLoginOpen(false);
+      }
+    });
+
+    window.addEventListener("site-language-changed", () => {
+      const storedUser = localStorage.getItem(loginStorageKey) || "";
+      applyLoginState(storedUser);
+    });
+
+    const storedUser = localStorage.getItem(loginStorageKey) || "";
+    applyLoginState(storedUser);
+
+    window.addEventListener("login-success", (event) => {
+      const email = event && event.detail && typeof event.detail.email === "string" ? event.detail.email : "";
+      localStorage.setItem(loginStorageKey, email);
+      applyLoginState(email);
+      setLoginOpen(false);
+    });
+  };
+
+  const setupMobileMenu = () => {
+    const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+    const mobileMenuPanel = document.getElementById("mobileMenuPanel");
+    const mobileMenuClose = document.getElementById("mobileMenuClose");
+    const mobileLoginBtn = document.getElementById("mobileLoginBtn");
+    const mobileFavoritesBtn = document.getElementById("mobileFavoritesBtn");
+    const mobileCartBtn = document.getElementById("mobileCartBtn");
+
+    if (!mobileMenuToggle || !mobileMenuPanel) {
+      return;
+    }
+
+    const setMobileMenuOpen = (open) => {
+      mobileMenuPanel.classList.toggle("max-h-0", !open);
+      mobileMenuPanel.classList.toggle("opacity-0", !open);
+      mobileMenuPanel.classList.toggle("-translate-y-2", !open);
+      mobileMenuPanel.classList.toggle("pointer-events-none", !open);
+      mobileMenuPanel.classList.toggle("max-h-[80vh]", open);
+      mobileMenuPanel.classList.toggle("opacity-100", open);
+      mobileMenuPanel.classList.toggle("translate-y-0", open);
+      mobileMenuPanel.classList.toggle("pointer-events-auto", open);
+      mobileMenuPanel.setAttribute("aria-hidden", open ? "false" : "true");
+      mobileMenuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.classList.toggle("overflow-hidden", open);
+    };
+
+    const closeAndClick = (targetId) => {
+      setMobileMenuOpen(false);
+      const target = document.getElementById(targetId);
+      if (target instanceof HTMLElement) {
+        target.click();
+      }
+    };
+
+    mobileMenuToggle.addEventListener("click", () => {
+      const expanded = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+      setMobileMenuOpen(!expanded);
+    });
+
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener("click", () => setMobileMenuOpen(false));
+    }
+
+    mobileMenuPanel.querySelectorAll('a[href]').forEach((link) => {
+      link.addEventListener("click", () => setMobileMenuOpen(false));
+    });
+
+    if (mobileLoginBtn) {
+      mobileLoginBtn.addEventListener("click", () => closeAndClick("loginOpenBtn"));
+    }
+
+    if (mobileFavoritesBtn) {
+      mobileFavoritesBtn.addEventListener("click", () => closeAndClick("favoritesToggle"));
+    }
+
+    if (mobileCartBtn) {
+      mobileCartBtn.addEventListener("click", () => closeAndClick("cartToggle"));
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobileMenuToggle.getAttribute("aria-expanded") === "true") {
+        setMobileMenuOpen(false);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    });
+  };
+
+  wireFormValidation("loginForm", "loginStatus", "loginSuccess", (form) => {
+    const emailInput = form.querySelector("#loginEmail");
+    const email = emailInput instanceof HTMLInputElement ? emailInput.value.trim() : "";
+    window.dispatchEvent(new CustomEvent("login-success", { detail: { email } }));
+  });
   wireFormValidation("applicationForm", "formStatus", "registerSuccess");
   wireFormValidation("contactForm", "contactStatus", "contactSuccess");
   setupCartAndLoyalty();
+  setupLoginModal();
+  setupMobileMenu();
   setupAnchorNavigation();
   applyTranslations();
 })();
