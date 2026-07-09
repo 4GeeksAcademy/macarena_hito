@@ -8,6 +8,19 @@ import type {
 } from "@/types/candidate";
 import type { Note } from "@/types/note";
 
+export type CandidateFormData = {
+  full_name: string;
+  email: string;
+  phone: string;
+  position: string;
+  linkedin_url: string;
+  cv_url: string;
+  experience_years: number;
+  status: CandidateStatus;
+  stage: CandidateStage;
+  applied_at: string;
+};
+
 export async function getCandidates(): Promise<Candidate[]> {
   const response = await fetch(getApiUrl("/records"));
 
@@ -90,4 +103,43 @@ export async function deleteNote(id: string, noteId: string): Promise<void> {
   if (!response.ok) {
     throw new Error("No se pudo eliminar la nota.");
   }
+}
+
+export async function createCandidate(
+  data: CandidateFormData
+): Promise<Candidate> {
+  const response = await fetch(getApiUrl("/records"), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo crear la candidatura.");
+  }
+
+  const result: CandidateResponse = await response.json();
+  return result.data;
+}
+
+export async function updateCandidateData(
+  id: string,
+  data: CandidateFormData
+): Promise<Candidate> {
+  const response = await fetch(getApiUrl(`/records/${id}`), {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error("No se pudo editar la candidatura.");
+  }
+
+  const result: CandidateResponse = await response.json();
+  return result.data;
 }

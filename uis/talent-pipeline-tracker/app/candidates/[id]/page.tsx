@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getCandidateById } from "@/services/candidates";
 import { CandidateActions } from "@/components/candidate/CandidateActions";
+import { CandidateNotes } from "@/components/candidate/CandidateNotes";
 import { StageBadge } from "@/components/common/StageBadge";
 import { StatusBadge } from "@/components/common/StatusBadge";
 
@@ -58,7 +59,12 @@ export default async function CandidateDetailPage({
             </p>
           </div>
 
-          <CandidateActions status={candidate.status} stage={candidate.stage} />
+          <CandidateActions
+            status={candidate.status}
+            stage={candidate.stage}
+          />
+
+          <CandidateNotes candidateId={id} />
         </section>
       </div>
     </main>
