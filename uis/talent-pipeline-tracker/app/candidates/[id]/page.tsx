@@ -20,9 +20,18 @@ export default async function CandidateDetailPage({
   return (
     <main className="min-h-screen bg-gray-100 p-8">
       <div className="mx-auto max-w-4xl">
-        <Link href="/" className="text-sm font-medium text-orange-600">
-          ← Volver al listado
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link href="/" className="text-sm font-medium text-orange-600">
+            ← Volver al listado
+          </Link>
+
+          <Link
+            href={`/edit/${id}`}
+            className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+          >
+            Editar candidatura
+          </Link>
+        </div>
 
         <section className="mt-6 rounded-2xl bg-white p-6 shadow-sm">
           <h1 className="text-3xl font-bold text-gray-900">
@@ -40,20 +49,25 @@ export default async function CandidateDetailPage({
             <p>
               <strong>Email:</strong> {candidate.email}
             </p>
+
             <p>
               <strong>Teléfono:</strong> {candidate.phone ?? "No disponible"}
             </p>
+
             <p>
               <strong>Experiencia:</strong> {candidate.experience_years} años
             </p>
+
             <p>
               <strong>Aplicó:</strong>{" "}
               {new Date(candidate.applied_at).toLocaleDateString()}
             </p>
+
             <p>
               <strong>LinkedIn:</strong>{" "}
               {candidate.linkedin_url ?? "No disponible"}
             </p>
+
             <p>
               <strong>CV:</strong> {candidate.cv_url ?? "No disponible"}
             </p>

@@ -1,11 +1,5 @@
-"use client";
-
-import { CandidateForm } from "@/components/candidate/CandidateForm";
-import {
-  getCandidateById,
-  updateCandidateData,
-  type CandidateFormData,
-} from "@/services/candidates";
+import { CandidateEditForm } from "@/components/candidate/CandidateEditForm";
+import { getCandidateById } from "@/services/candidates";
 
 interface EditCandidatePageProps {
   params: Promise<{
@@ -17,14 +11,7 @@ export default async function EditCandidatePage({
   params,
 }: EditCandidatePageProps) {
   const { id } = await params;
-
   const candidate = await getCandidateById(id);
-
-  async function handleUpdateCandidate(data: CandidateFormData) {
-    "use server";
-
-    await updateCandidateData(id, data);
-  }
 
   return (
     <main className="mx-auto max-w-3xl p-6">
@@ -36,12 +23,7 @@ export default async function EditCandidatePage({
         Actualizá la información de la candidatura.
       </p>
 
-      <CandidateForm
-        initialData={candidate}
-        onSubmit={handleUpdateCandidate}
-        submitLabel="Guardar cambios"
-        successMessage="La candidatura se actualizó correctamente."
-      />
+      <CandidateEditForm candidate={candidate} />
     </main>
   );
 }
