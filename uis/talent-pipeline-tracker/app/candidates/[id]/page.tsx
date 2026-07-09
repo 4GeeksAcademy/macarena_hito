@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCandidateById } from "@/services/candidates";
+import { CandidateActions } from "@/components/candidate/CandidateActions";
 import { StageBadge } from "@/components/common/StageBadge";
 import { StatusBadge } from "@/components/common/StatusBadge";
 
@@ -35,13 +36,29 @@ export default async function CandidateDetailPage({
           </div>
 
           <div className="mt-6 grid gap-4 text-sm text-gray-700 md:grid-cols-2">
-            <p><strong>Email:</strong> {candidate.email}</p>
-            <p><strong>Teléfono:</strong> {candidate.phone ?? "No disponible"}</p>
-            <p><strong>Experiencia:</strong> {candidate.experience_years} años</p>
-            <p><strong>Aplicó:</strong> {new Date(candidate.applied_at).toLocaleDateString()}</p>
-            <p><strong>LinkedIn:</strong> {candidate.linkedin_url ?? "No disponible"}</p>
-            <p><strong>CV:</strong> {candidate.cv_url ?? "No disponible"}</p>
+            <p>
+              <strong>Email:</strong> {candidate.email}
+            </p>
+            <p>
+              <strong>Teléfono:</strong> {candidate.phone ?? "No disponible"}
+            </p>
+            <p>
+              <strong>Experiencia:</strong> {candidate.experience_years} años
+            </p>
+            <p>
+              <strong>Aplicó:</strong>{" "}
+              {new Date(candidate.applied_at).toLocaleDateString()}
+            </p>
+            <p>
+              <strong>LinkedIn:</strong>{" "}
+              {candidate.linkedin_url ?? "No disponible"}
+            </p>
+            <p>
+              <strong>CV:</strong> {candidate.cv_url ?? "No disponible"}
+            </p>
           </div>
+
+          <CandidateActions status={candidate.status} stage={candidate.stage} />
         </section>
       </div>
     </main>
