@@ -9,9 +9,13 @@ import type { Candidate } from "@/types/candidate";
 
 interface CandidateEditFormProps {
   candidate: Candidate;
+  redirectPath?: string;
 }
 
-export function CandidateEditForm({ candidate }: CandidateEditFormProps) {
+export function CandidateEditForm({
+  candidate,
+  redirectPath,
+}: CandidateEditFormProps) {
   async function handleUpdateCandidate(data: CandidateFormData) {
     await updateCandidateData(candidate.id, data);
   }
@@ -22,6 +26,7 @@ export function CandidateEditForm({ candidate }: CandidateEditFormProps) {
       onSubmit={handleUpdateCandidate}
       submitLabel="Guardar cambios"
       successMessage="La candidatura se actualizó correctamente."
+      redirectPath={redirectPath}
     />
   );
 }

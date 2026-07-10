@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Note } from "@/types/note";
 import {
+  CandidatesApiError,
   createNote,
   deleteNote,
   getCandidateNotes,
@@ -17,18 +18,25 @@ export function CandidateNotes({ candidateId }: CandidateNotesProps) {
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+  const [deletingNoteId, setDeletingNoteId] = useState<string | null>(null);
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     async function loadNotes() {
       try {
         setIsLoading(true);
         setError("");
+        setMessage("");
 
         const notesData = await getCandidateNotes(candidateId);
         setNotes(notesData);
-      } catch {
-        setError("Ocurrió un error al cargar las notas.");
+      } catch (error) {
+        setError(
+          error instanceof CandidatesApiError
+            ? error.message
+            : "Ocurrió un error al cargar las notas."
+        );
       } finally {
         setIsLoading(false);
       }
@@ -45,13 +53,19 @@ export function CandidateNotes({ candidateId }: CandidateNotesProps) {
     try {
       setIsSaving(true);
       setError("");
+      setMessage("");
 
       const newNote = await createNote(candidateId, content.trim());
 
       setNotes((currentNotes) => [newNote, ...currentNotes]);
       setContent("");
-    } catch {
-      setError("No se pudo crear la nota.");
+      setMessage("Nota agregada correctamente.");
+    } catch (error) {
+      setError(
+        error instanceof CandidatesApiError
+          ? error.message
+          : "No se pudo crear la nota."
+      );
     } finally {
       setIsSaving(false);
     }
@@ -60,14 +74,23 @@ export function CandidateNotes({ candidateId }: CandidateNotesProps) {
   async function handleDeleteNote(noteId: string) {
     try {
       setError("");
+      setMessage("");
+      setDeletingNoteId(noteId);
 
       await deleteNote(candidateId, noteId);
 
       setNotes((currentNotes) =>
         currentNotes.filter((note) => note.id !== noteId)
       );
-    } catch {
-      setError("No se pudo eliminar la nota.");
+      setMessage("Nota eliminada correctamente.");
+    } catch (error) {
+      setError(
+        error instanceof CandidatesApiError
+          ? error.message
+          : "No se pudo eliminar la nota."
+      );
+    } finally {
+      setDeletingNoteId(null);
     }
   }
 
@@ -96,6 +119,12 @@ export function CandidateNotes({ candidateId }: CandidateNotesProps) {
         <p className="mt-4 text-sm text-gray-600">Cargando notas...</p>
       )}
 
+      {deletingNoteId && (
+        <p className="mt-4 text-sm text-gray-600">Eliminando nota...</p>
+      )}
+
+      {message && <p className="mt-4 text-sm text-green-700">{message}</p>}
+
       {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
 
       {!isLoading && !error && notes.length === 0 && (
@@ -122,10 +151,11 @@ export function CandidateNotes({ candidateId }: CandidateNotesProps) {
 
                 <button
                   type="button"
+                  disabled={deletingNoteId === note.id}
                   onClick={() => handleDeleteNote(note.id)}
-                  className="text-xs font-semibold text-red-600 hover:text-red-700"
+                  className="text-xs font-semibold text-red-600 hover:text-red-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  Eliminar
+                  {deletingNoteId === note.id ? "Eliminando..." : "Eliminar"}
                 </button>
               </div>
             </li>
